@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:step/data/repositories/user_handler.dart';
+import 'package:step/domain/models.dart';
 import 'package:step/global_logger.dart';
 import 'package:step/presentation/common/styles/styles.dart';
 import 'package:step/routes.dart';
@@ -10,6 +12,8 @@ class HomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var goRouter = ref.watch(goRouterProvider);
+
+    User currentUser = ref.watch(userStateProvider);
 
     LOG.i("Opened home screen");
 
@@ -28,6 +32,10 @@ class HomePage extends ConsumerWidget {
             children: [
               Text(
                 "Home Screen",
+                style: AppThemeTextStyles.defaultText,
+              ),
+              Text(
+                "Signed in as ${currentUser.userId}",
                 style: AppThemeTextStyles.defaultText,
               ),
             ],
