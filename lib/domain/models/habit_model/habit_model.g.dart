@@ -10,13 +10,14 @@ _$HabitImpl _$$HabitImplFromJson(Map<String, dynamic> json) => _$HabitImpl(
       name: json['name'] as String,
       id: json['id'] as String,
       iconId: json['iconId'] as String,
-      hexColor: (json['hexColor'] as num).toInt(),
       isMeasurable: json['isMeasurable'] as bool,
       displayed: json['displayed'] as bool,
-      todayValue: (json['todayValue'] as num).toInt(),
-      incrementValue: (json['incrementValue'] as num).toInt(),
-      goal: (json['goal'] as num).toInt(),
-      maxValue: (json['maxValue'] as num).toInt(),
+      todayValue: (json['todayValue'] as num).toDouble(),
+      incrementValue: (json['incrementValue'] as num).toDouble(),
+      dailyGoal: (json['dailyGoal'] as num).toDouble(),
+      maxValue: (json['maxValue'] as num).toDouble(),
+      unitLabel: json['unitLabel'] as String,
+      hexColor: (json['hexColor'] as num).toInt(),
       stats: HabitStats.fromJson(json['stats'] as Map<String, dynamic>),
     );
 
@@ -25,13 +26,14 @@ Map<String, dynamic> _$$HabitImplToJson(_$HabitImpl instance) =>
       'name': instance.name,
       'id': instance.id,
       'iconId': instance.iconId,
-      'hexColor': instance.hexColor,
       'isMeasurable': instance.isMeasurable,
       'displayed': instance.displayed,
       'todayValue': instance.todayValue,
       'incrementValue': instance.incrementValue,
-      'goal': instance.goal,
+      'dailyGoal': instance.dailyGoal,
       'maxValue': instance.maxValue,
+      'unitLabel': instance.unitLabel,
+      'hexColor': instance.hexColor,
       'stats': instance.stats,
     };
 
@@ -53,7 +55,7 @@ Map<String, dynamic> _$$HabitStatsImplToJson(_$HabitStatsImpl instance) =>
 
 _$DayImpl _$$DayImplFromJson(Map<String, dynamic> json) => _$DayImpl(
       date: DateTime.parse(json['date'] as String),
-      value: (json['value'] as num).toInt(),
+      value: (json['value'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$$DayImplToJson(_$DayImpl instance) => <String, dynamic>{

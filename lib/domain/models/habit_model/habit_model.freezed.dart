@@ -23,14 +23,15 @@ mixin _$Habit {
 // Id
   String get name => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
-  String get iconId => throw _privateConstructorUsedError;
-  int get hexColor => throw _privateConstructorUsedError; // Bools
+  String get iconId => throw _privateConstructorUsedError; // Bools
   bool get isMeasurable => throw _privateConstructorUsedError;
   bool get displayed => throw _privateConstructorUsedError; // Properties
-  int get todayValue => throw _privateConstructorUsedError;
-  int get incrementValue => throw _privateConstructorUsedError;
-  int get goal => throw _privateConstructorUsedError;
-  int get maxValue => throw _privateConstructorUsedError; // Stats
+  double get todayValue => throw _privateConstructorUsedError;
+  double get incrementValue => throw _privateConstructorUsedError;
+  double get dailyGoal => throw _privateConstructorUsedError;
+  double get maxValue => throw _privateConstructorUsedError;
+  String get unitLabel => throw _privateConstructorUsedError;
+  int get hexColor => throw _privateConstructorUsedError; // Stats
   HabitStats get stats => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -47,13 +48,14 @@ abstract class $HabitCopyWith<$Res> {
       {String name,
       String id,
       String iconId,
-      int hexColor,
       bool isMeasurable,
       bool displayed,
-      int todayValue,
-      int incrementValue,
-      int goal,
-      int maxValue,
+      double todayValue,
+      double incrementValue,
+      double dailyGoal,
+      double maxValue,
+      String unitLabel,
+      int hexColor,
       HabitStats stats});
 
   $HabitStatsCopyWith<$Res> get stats;
@@ -75,13 +77,14 @@ class _$HabitCopyWithImpl<$Res, $Val extends Habit>
     Object? name = null,
     Object? id = null,
     Object? iconId = null,
-    Object? hexColor = null,
     Object? isMeasurable = null,
     Object? displayed = null,
     Object? todayValue = null,
     Object? incrementValue = null,
-    Object? goal = null,
+    Object? dailyGoal = null,
     Object? maxValue = null,
+    Object? unitLabel = null,
+    Object? hexColor = null,
     Object? stats = null,
   }) {
     return _then(_value.copyWith(
@@ -97,10 +100,6 @@ class _$HabitCopyWithImpl<$Res, $Val extends Habit>
           ? _value.iconId
           : iconId // ignore: cast_nullable_to_non_nullable
               as String,
-      hexColor: null == hexColor
-          ? _value.hexColor
-          : hexColor // ignore: cast_nullable_to_non_nullable
-              as int,
       isMeasurable: null == isMeasurable
           ? _value.isMeasurable
           : isMeasurable // ignore: cast_nullable_to_non_nullable
@@ -112,18 +111,26 @@ class _$HabitCopyWithImpl<$Res, $Val extends Habit>
       todayValue: null == todayValue
           ? _value.todayValue
           : todayValue // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       incrementValue: null == incrementValue
           ? _value.incrementValue
           : incrementValue // ignore: cast_nullable_to_non_nullable
-              as int,
-      goal: null == goal
-          ? _value.goal
-          : goal // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
+      dailyGoal: null == dailyGoal
+          ? _value.dailyGoal
+          : dailyGoal // ignore: cast_nullable_to_non_nullable
+              as double,
       maxValue: null == maxValue
           ? _value.maxValue
           : maxValue // ignore: cast_nullable_to_non_nullable
+              as double,
+      unitLabel: null == unitLabel
+          ? _value.unitLabel
+          : unitLabel // ignore: cast_nullable_to_non_nullable
+              as String,
+      hexColor: null == hexColor
+          ? _value.hexColor
+          : hexColor // ignore: cast_nullable_to_non_nullable
               as int,
       stats: null == stats
           ? _value.stats
@@ -152,13 +159,14 @@ abstract class _$$HabitImplCopyWith<$Res> implements $HabitCopyWith<$Res> {
       {String name,
       String id,
       String iconId,
-      int hexColor,
       bool isMeasurable,
       bool displayed,
-      int todayValue,
-      int incrementValue,
-      int goal,
-      int maxValue,
+      double todayValue,
+      double incrementValue,
+      double dailyGoal,
+      double maxValue,
+      String unitLabel,
+      int hexColor,
       HabitStats stats});
 
   @override
@@ -179,13 +187,14 @@ class __$$HabitImplCopyWithImpl<$Res>
     Object? name = null,
     Object? id = null,
     Object? iconId = null,
-    Object? hexColor = null,
     Object? isMeasurable = null,
     Object? displayed = null,
     Object? todayValue = null,
     Object? incrementValue = null,
-    Object? goal = null,
+    Object? dailyGoal = null,
     Object? maxValue = null,
+    Object? unitLabel = null,
+    Object? hexColor = null,
     Object? stats = null,
   }) {
     return _then(_$HabitImpl(
@@ -201,10 +210,6 @@ class __$$HabitImplCopyWithImpl<$Res>
           ? _value.iconId
           : iconId // ignore: cast_nullable_to_non_nullable
               as String,
-      hexColor: null == hexColor
-          ? _value.hexColor
-          : hexColor // ignore: cast_nullable_to_non_nullable
-              as int,
       isMeasurable: null == isMeasurable
           ? _value.isMeasurable
           : isMeasurable // ignore: cast_nullable_to_non_nullable
@@ -216,18 +221,26 @@ class __$$HabitImplCopyWithImpl<$Res>
       todayValue: null == todayValue
           ? _value.todayValue
           : todayValue // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       incrementValue: null == incrementValue
           ? _value.incrementValue
           : incrementValue // ignore: cast_nullable_to_non_nullable
-              as int,
-      goal: null == goal
-          ? _value.goal
-          : goal // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
+      dailyGoal: null == dailyGoal
+          ? _value.dailyGoal
+          : dailyGoal // ignore: cast_nullable_to_non_nullable
+              as double,
       maxValue: null == maxValue
           ? _value.maxValue
           : maxValue // ignore: cast_nullable_to_non_nullable
+              as double,
+      unitLabel: null == unitLabel
+          ? _value.unitLabel
+          : unitLabel // ignore: cast_nullable_to_non_nullable
+              as String,
+      hexColor: null == hexColor
+          ? _value.hexColor
+          : hexColor // ignore: cast_nullable_to_non_nullable
               as int,
       stats: null == stats
           ? _value.stats
@@ -244,13 +257,14 @@ class _$HabitImpl extends _Habit {
       {required this.name,
       required this.id,
       required this.iconId,
-      required this.hexColor,
       required this.isMeasurable,
       required this.displayed,
       required this.todayValue,
       required this.incrementValue,
-      required this.goal,
+      required this.dailyGoal,
       required this.maxValue,
+      required this.unitLabel,
+      required this.hexColor,
       required this.stats})
       : super._();
 
@@ -264,8 +278,6 @@ class _$HabitImpl extends _Habit {
   final String id;
   @override
   final String iconId;
-  @override
-  final int hexColor;
 // Bools
   @override
   final bool isMeasurable;
@@ -273,20 +285,24 @@ class _$HabitImpl extends _Habit {
   final bool displayed;
 // Properties
   @override
-  final int todayValue;
+  final double todayValue;
   @override
-  final int incrementValue;
+  final double incrementValue;
   @override
-  final int goal;
+  final double dailyGoal;
   @override
-  final int maxValue;
+  final double maxValue;
+  @override
+  final String unitLabel;
+  @override
+  final int hexColor;
 // Stats
   @override
   final HabitStats stats;
 
   @override
   String toString() {
-    return 'Habit(name: $name, id: $id, iconId: $iconId, hexColor: $hexColor, isMeasurable: $isMeasurable, displayed: $displayed, todayValue: $todayValue, incrementValue: $incrementValue, goal: $goal, maxValue: $maxValue, stats: $stats)';
+    return 'Habit(name: $name, id: $id, iconId: $iconId, isMeasurable: $isMeasurable, displayed: $displayed, todayValue: $todayValue, incrementValue: $incrementValue, dailyGoal: $dailyGoal, maxValue: $maxValue, unitLabel: $unitLabel, hexColor: $hexColor, stats: $stats)';
   }
 
   @override
@@ -297,8 +313,6 @@ class _$HabitImpl extends _Habit {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.iconId, iconId) || other.iconId == iconId) &&
-            (identical(other.hexColor, hexColor) ||
-                other.hexColor == hexColor) &&
             (identical(other.isMeasurable, isMeasurable) ||
                 other.isMeasurable == isMeasurable) &&
             (identical(other.displayed, displayed) ||
@@ -307,9 +321,14 @@ class _$HabitImpl extends _Habit {
                 other.todayValue == todayValue) &&
             (identical(other.incrementValue, incrementValue) ||
                 other.incrementValue == incrementValue) &&
-            (identical(other.goal, goal) || other.goal == goal) &&
+            (identical(other.dailyGoal, dailyGoal) ||
+                other.dailyGoal == dailyGoal) &&
             (identical(other.maxValue, maxValue) ||
                 other.maxValue == maxValue) &&
+            (identical(other.unitLabel, unitLabel) ||
+                other.unitLabel == unitLabel) &&
+            (identical(other.hexColor, hexColor) ||
+                other.hexColor == hexColor) &&
             (identical(other.stats, stats) || other.stats == stats));
   }
 
@@ -320,13 +339,14 @@ class _$HabitImpl extends _Habit {
       name,
       id,
       iconId,
-      hexColor,
       isMeasurable,
       displayed,
       todayValue,
       incrementValue,
-      goal,
+      dailyGoal,
       maxValue,
+      unitLabel,
+      hexColor,
       stats);
 
   @JsonKey(ignore: true)
@@ -348,13 +368,14 @@ abstract class _Habit extends Habit {
       {required final String name,
       required final String id,
       required final String iconId,
-      required final int hexColor,
       required final bool isMeasurable,
       required final bool displayed,
-      required final int todayValue,
-      required final int incrementValue,
-      required final int goal,
-      required final int maxValue,
+      required final double todayValue,
+      required final double incrementValue,
+      required final double dailyGoal,
+      required final double maxValue,
+      required final String unitLabel,
+      required final int hexColor,
       required final HabitStats stats}) = _$HabitImpl;
   const _Habit._() : super._();
 
@@ -366,20 +387,22 @@ abstract class _Habit extends Habit {
   String get id;
   @override
   String get iconId;
-  @override
-  int get hexColor;
   @override // Bools
   bool get isMeasurable;
   @override
   bool get displayed;
   @override // Properties
-  int get todayValue;
+  double get todayValue;
   @override
-  int get incrementValue;
+  double get incrementValue;
   @override
-  int get goal;
+  double get dailyGoal;
   @override
-  int get maxValue;
+  double get maxValue;
+  @override
+  String get unitLabel;
+  @override
+  int get hexColor;
   @override // Stats
   HabitStats get stats;
   @override
@@ -577,7 +600,7 @@ Day _$DayFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Day {
   DateTime get date => throw _privateConstructorUsedError;
-  int get value => throw _privateConstructorUsedError;
+  double get value => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -589,7 +612,7 @@ abstract class $DayCopyWith<$Res> {
   factory $DayCopyWith(Day value, $Res Function(Day) then) =
       _$DayCopyWithImpl<$Res, Day>;
   @useResult
-  $Res call({DateTime date, int value});
+  $Res call({DateTime date, double value});
 }
 
 /// @nodoc
@@ -615,7 +638,7 @@ class _$DayCopyWithImpl<$Res, $Val extends Day> implements $DayCopyWith<$Res> {
       value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
     ) as $Val);
   }
 }
@@ -626,7 +649,7 @@ abstract class _$$DayImplCopyWith<$Res> implements $DayCopyWith<$Res> {
       __$$DayImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({DateTime date, int value});
+  $Res call({DateTime date, double value});
 }
 
 /// @nodoc
@@ -649,7 +672,7 @@ class __$$DayImplCopyWithImpl<$Res> extends _$DayCopyWithImpl<$Res, _$DayImpl>
       value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
     ));
   }
 }
@@ -665,7 +688,7 @@ class _$DayImpl implements _Day {
   @override
   final DateTime date;
   @override
-  final int value;
+  final double value;
 
   @override
   String toString() {
@@ -700,15 +723,15 @@ class _$DayImpl implements _Day {
 }
 
 abstract class _Day implements Day {
-  const factory _Day({required final DateTime date, required final int value}) =
-      _$DayImpl;
+  const factory _Day(
+      {required final DateTime date, required final double value}) = _$DayImpl;
 
   factory _Day.fromJson(Map<String, dynamic> json) = _$DayImpl.fromJson;
 
   @override
   DateTime get date;
   @override
-  int get value;
+  double get value;
   @override
   @JsonKey(ignore: true)
   _$$DayImplCopyWith<_$DayImpl> get copyWith =>

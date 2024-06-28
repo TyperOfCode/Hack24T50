@@ -10,15 +10,16 @@ class Habit with _$Habit {
     required String name,
     required String id,
     required String iconId,
-    required int hexColor,
     // Bools
     required bool isMeasurable,
     required bool displayed,
     // Properties
-    required int todayValue,
-    required int incrementValue,
-    required int goal,
-    required int maxValue,
+    required double todayValue,
+    required double incrementValue,
+    required double dailyGoal,
+    required double maxValue,
+    required String unitLabel,
+    required int hexColor,
     // Stats
     required HabitStats stats,
   }) = _Habit;
@@ -50,7 +51,7 @@ class HabitStats with _$HabitStats {
 class Day with _$Day {
   const factory Day({
     required DateTime date,
-    required int value,
+    required double value,
   }) = _Day;
 
   factory Day.fromJson(Map<String, dynamic> json) => _$DayFromJson(json);
