@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:step/global_logger.dart';
+import 'package:step/presentation/common/styles/styles.dart';
 import 'package:step/routes.dart';
 
 class HomePage extends ConsumerWidget {
@@ -15,18 +16,20 @@ class HomePage extends ConsumerWidget {
     return GestureDetector(
       onHorizontalDragEnd: (details) {
         if (details.primaryVelocity! < 0) {
-          LOG.d("HERE");
           goRouter.go(AppPaths.buddyScreen.path);
         }
       },
       child: Scaffold(
-        backgroundColor: Colors.blue,
+        backgroundColor: AppThemeColors.background500,
         body: Container(
           alignment: Alignment.center,
-          child: const Column(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Home Screen"),
+              Text(
+                "Home Screen",
+                style: AppThemeTextStyles.defaultText,
+              ),
             ],
           ),
         ),
