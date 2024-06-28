@@ -9,7 +9,7 @@ class Habit with _$Habit {
     // Id
     required String name,
     required String id,
-    required String iconId,
+    required int iconHexId,
     // Bools
     required bool isMeasurable,
     required bool displayed,

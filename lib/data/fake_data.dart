@@ -5,14 +5,14 @@ class FakeData {
   static Habit drinkWater = const Habit(
     name: "Drink Water",
     id: "1234",
-    iconId: "water_drop",
+    iconHexId: 0xf0695, // Water drop
     unitLabel: "L",
-    hexColor: 0x89DAFF,
+    hexColor: 0xFF342D91,
     isMeasurable: true,
     displayed: true,
     todayValue: 0,
     incrementValue: 0.25,
-    dailyGoal: 1.5,
+    dailyGoal: 1,
     maxValue: 6,
     stats: HabitStats(
       streak: 0,
@@ -24,9 +24,9 @@ class FakeData {
   static Habit sleep = const Habit(
     name: "Sleep Hours",
     id: "1235",
-    iconId: "bedtime",
+    iconHexId: 0xeecb, // Snooze icon
     unitLabel: "H",
-    hexColor: 0x8d93d3,
+    hexColor: 0xFF662D91,
     isMeasurable: true,
     displayed: true,
     todayValue: 0,

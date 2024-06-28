@@ -9,7 +9,7 @@ part of 'habit_model.dart';
 _$HabitImpl _$$HabitImplFromJson(Map<String, dynamic> json) => _$HabitImpl(
       name: json['name'] as String,
       id: json['id'] as String,
-      iconId: json['iconId'] as String,
+      iconHexId: (json['iconHexId'] as num).toInt(),
       isMeasurable: json['isMeasurable'] as bool,
       displayed: json['displayed'] as bool,
       todayValue: (json['todayValue'] as num).toDouble(),
@@ -25,7 +25,7 @@ Map<String, dynamic> _$$HabitImplToJson(_$HabitImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'id': instance.id,
-      'iconId': instance.iconId,
+      'iconHexId': instance.iconHexId,
       'isMeasurable': instance.isMeasurable,
       'displayed': instance.displayed,
       'todayValue': instance.todayValue,
