@@ -30,9 +30,9 @@ class UserStateNotifier extends StateNotifier<User> {
     state = state.copyWith(habits: habitList);
   }
 
-  void removeHabit(Habit habit) {
+  void removeHabit(String habitId) {
     List<Habit> habitList = state.habits.map((e) => e).toList();
-    habitList.remove(habit);
+    habitList.removeWhere((element) => element.id == habitId);
 
     state = state.copyWith(habits: habitList);
   }
