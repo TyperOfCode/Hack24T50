@@ -23,7 +23,7 @@ mixin _$Habit {
 // Id
   String get name => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
-  String get iconId => throw _privateConstructorUsedError; // Bools
+  int get iconHexId => throw _privateConstructorUsedError; // Bools
   bool get isMeasurable => throw _privateConstructorUsedError;
   bool get displayed => throw _privateConstructorUsedError; // Properties
   double get todayValue => throw _privateConstructorUsedError;
@@ -47,7 +47,7 @@ abstract class $HabitCopyWith<$Res> {
   $Res call(
       {String name,
       String id,
-      String iconId,
+      int iconHexId,
       bool isMeasurable,
       bool displayed,
       double todayValue,
@@ -76,7 +76,7 @@ class _$HabitCopyWithImpl<$Res, $Val extends Habit>
   $Res call({
     Object? name = null,
     Object? id = null,
-    Object? iconId = null,
+    Object? iconHexId = null,
     Object? isMeasurable = null,
     Object? displayed = null,
     Object? todayValue = null,
@@ -96,10 +96,10 @@ class _$HabitCopyWithImpl<$Res, $Val extends Habit>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      iconId: null == iconId
-          ? _value.iconId
-          : iconId // ignore: cast_nullable_to_non_nullable
-              as String,
+      iconHexId: null == iconHexId
+          ? _value.iconHexId
+          : iconHexId // ignore: cast_nullable_to_non_nullable
+              as int,
       isMeasurable: null == isMeasurable
           ? _value.isMeasurable
           : isMeasurable // ignore: cast_nullable_to_non_nullable
@@ -158,7 +158,7 @@ abstract class _$$HabitImplCopyWith<$Res> implements $HabitCopyWith<$Res> {
   $Res call(
       {String name,
       String id,
-      String iconId,
+      int iconHexId,
       bool isMeasurable,
       bool displayed,
       double todayValue,
@@ -186,7 +186,7 @@ class __$$HabitImplCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? id = null,
-    Object? iconId = null,
+    Object? iconHexId = null,
     Object? isMeasurable = null,
     Object? displayed = null,
     Object? todayValue = null,
@@ -206,10 +206,10 @@ class __$$HabitImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      iconId: null == iconId
-          ? _value.iconId
-          : iconId // ignore: cast_nullable_to_non_nullable
-              as String,
+      iconHexId: null == iconHexId
+          ? _value.iconHexId
+          : iconHexId // ignore: cast_nullable_to_non_nullable
+              as int,
       isMeasurable: null == isMeasurable
           ? _value.isMeasurable
           : isMeasurable // ignore: cast_nullable_to_non_nullable
@@ -256,7 +256,7 @@ class _$HabitImpl extends _Habit {
   const _$HabitImpl(
       {required this.name,
       required this.id,
-      required this.iconId,
+      required this.iconHexId,
       required this.isMeasurable,
       required this.displayed,
       required this.todayValue,
@@ -277,7 +277,7 @@ class _$HabitImpl extends _Habit {
   @override
   final String id;
   @override
-  final String iconId;
+  final int iconHexId;
 // Bools
   @override
   final bool isMeasurable;
@@ -302,7 +302,7 @@ class _$HabitImpl extends _Habit {
 
   @override
   String toString() {
-    return 'Habit(name: $name, id: $id, iconId: $iconId, isMeasurable: $isMeasurable, displayed: $displayed, todayValue: $todayValue, incrementValue: $incrementValue, dailyGoal: $dailyGoal, maxValue: $maxValue, unitLabel: $unitLabel, hexColor: $hexColor, stats: $stats)';
+    return 'Habit(name: $name, id: $id, iconHexId: $iconHexId, isMeasurable: $isMeasurable, displayed: $displayed, todayValue: $todayValue, incrementValue: $incrementValue, dailyGoal: $dailyGoal, maxValue: $maxValue, unitLabel: $unitLabel, hexColor: $hexColor, stats: $stats)';
   }
 
   @override
@@ -312,7 +312,8 @@ class _$HabitImpl extends _Habit {
             other is _$HabitImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.iconId, iconId) || other.iconId == iconId) &&
+            (identical(other.iconHexId, iconHexId) ||
+                other.iconHexId == iconHexId) &&
             (identical(other.isMeasurable, isMeasurable) ||
                 other.isMeasurable == isMeasurable) &&
             (identical(other.displayed, displayed) ||
@@ -338,7 +339,7 @@ class _$HabitImpl extends _Habit {
       runtimeType,
       name,
       id,
-      iconId,
+      iconHexId,
       isMeasurable,
       displayed,
       todayValue,
@@ -367,7 +368,7 @@ abstract class _Habit extends Habit {
   const factory _Habit(
       {required final String name,
       required final String id,
-      required final String iconId,
+      required final int iconHexId,
       required final bool isMeasurable,
       required final bool displayed,
       required final double todayValue,
@@ -386,7 +387,7 @@ abstract class _Habit extends Habit {
   @override
   String get id;
   @override
-  String get iconId;
+  int get iconHexId;
   @override // Bools
   bool get isMeasurable;
   @override

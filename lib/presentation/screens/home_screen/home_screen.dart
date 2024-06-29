@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:step/data/repositories/user_handler.dart';
 import 'package:step/domain/models.dart';
 import 'package:step/global_logger.dart';
+import 'package:step/presentation/common/components/habit_tile.dart';
 import 'package:step/presentation/common/styles/styles.dart';
 import 'package:step/routes.dart';
 
@@ -14,8 +15,6 @@ class HomePage extends ConsumerWidget {
     var goRouter = ref.watch(goRouterProvider);
 
     User currentUser = ref.watch(userStateProvider);
-
-    LOG.i("Opened home screen");
 
     return GestureDetector(
       onHorizontalDragEnd: (details) {
@@ -30,18 +29,26 @@ class HomePage extends ConsumerWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                "Home Screen",
-                style: AppThemeTextStyles.defaultText,
-              ),
-              Text(
-                "Signed in as ${currentUser.userId}",
-                style: AppThemeTextStyles.defaultText,
-              ),
+              createHabitGridView(currentUser.habits) // GridView
             ],
           ),
         ),
       ),
     );
   }
+}
+
+GridView createHabitGridView(List<Habit> habits) {
+  return GridView.count(
+    padding: const EdgeInsets.all(15),
+    shrinkWrap: true,
+    crossAxisCount: 2,
+    crossAxisSpacing: 0,
+    mainAxisSpacing: 10,
+    children: habits
+        .map(
+          (e) => HabitTile(habit: e),
+        )
+        .toList(),
+  );
 }
