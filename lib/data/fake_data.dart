@@ -39,8 +39,32 @@ class FakeData {
       days: [],
     ),
   );
+
+  static Habit placeholder = const Habit(
+    name: "Placeholder",
+    id: "1236",
+    iconHexId: 0xf54f, // Airport shuttle rounded
+    unitLabel: ".PL",
+    hexColor: 0xFF662D91,
+    isMeasurable: false,
+    displayed: true,
+    todayValue: 0,
+    incrementValue: 1,
+    dailyGoal: 1,
+    maxValue: 1,
+    stats: HabitStats(
+      streak: 0,
+      longestStreak: 0,
+      days: [],
+    ),
+  );
+
   static User baseFakeUser = User(userId: "fakeid", habits: [
     FakeData.drinkWater,
     FakeData.sleep,
   ]);
+
+  static List<Habit> getAllHabits() {
+    return [drinkWater, sleep, placeholder];
+  }
 }

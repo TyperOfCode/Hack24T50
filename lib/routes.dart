@@ -6,6 +6,7 @@ import 'package:step/presentation/screens/screens.dart';
 enum AppPaths {
   buddyScreen("/buddy"),
   homeScreen("/"),
+  addHabitScreen("/add-habit"),
   notFoundScreen("/:_(.*)");
 
   const AppPaths(this.path);
@@ -68,6 +69,10 @@ Provider<GoRouter> goRouterProvider = Provider<GoRouter>((ref) {
             );
           },
         ),
+      ),
+      GoRoute(
+        path: AppPaths.addHabitScreen.path,
+        builder: (BuildContext context, GoRouterState state) => AddHabitScreen (),
       ),
     ],
   );

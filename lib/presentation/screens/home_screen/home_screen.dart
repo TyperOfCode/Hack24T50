@@ -5,7 +5,7 @@ import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
 import 'package:step/data/repositories/user_handler.dart';
 import 'package:step/domain/models.dart';
-import 'package:step/global_logger.dart';
+import 'package:step/presentation/common/components/add_habit_button.dart';
 import 'package:step/presentation/common/components/habit_tile.dart';
 import 'package:step/presentation/common/styles/styles.dart';
 import 'package:step/routes.dart';
@@ -90,10 +90,14 @@ GridView createHabitGridView(List<Habit> habits) {
     crossAxisCount: 2,
     crossAxisSpacing: 0,
     mainAxisSpacing: 10,
-    children: habits
+    children: [
+        ...habits
         .map(
           (e) => HabitTile(habit: e),
         )
-        .toList(),
+        .toList(), 
+        const AddHabitButton(),
+        ],
+        
   );
 }
