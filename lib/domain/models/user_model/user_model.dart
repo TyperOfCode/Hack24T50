@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:step/data/fake_data.dart';
 
 import '../habit_model/habit_model.dart';
 import '../user_stat_model/user_stat_model.dart';
@@ -28,6 +29,11 @@ class User with _$User {
       avgHabitScore: avgHabitScore,
       displayedHabits: habits.where((e) => e.displayed).toList(),
     );
+  }
+
+  List<Habit> availableHabits() {
+    List<Habit> allHabits = FakeData.getAllHabits();
+    return allHabits.where((e) => !habits.contains(e)).toList();
   }
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
