@@ -5,6 +5,7 @@ import 'package:step/data/repositories/user_handler.dart';
 import 'package:step/domain/models/habit_model/habit_model.dart';
 import 'package:step/global_logger.dart';
 import 'package:step/presentation/common/styles/styles.dart';
+import 'package:step/routes.dart';
 
 class HabitTile extends ConsumerStatefulWidget {
   final Habit habit;
@@ -21,6 +22,7 @@ class HabitTileState extends ConsumerState<HabitTile> {
   @override
   Widget build(BuildContext context) {
     var userStateNotifier = ref.watch(userStateProvider.notifier);
+    var goRouter = ref.watch(goRouterProvider);
     Color habitColor = Color(widget.habit.hexColor);
 
     return Column(
@@ -36,8 +38,8 @@ class HabitTileState extends ConsumerState<HabitTile> {
             userStateNotifier.incrementHabit(widget.habit.id);
           },
           onLongPress: () {
-            //TODO: Stats page
             LOG.i("Should open stats page for ${widget.habit.name}");
+            goRouter.go(AppPaths.statScreen.path);
           },
           customBorder: const CircleBorder(),
           splashColor: habitColor.withAlpha(100),
