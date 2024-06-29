@@ -25,6 +25,12 @@ class HabitTileState extends ConsumerState<HabitTile> {
 
     return Column(
       children: [
+        Text(
+            "${widget.habit.todayValue} / ${widget.habit.dailyGoal} ${widget.habit.unitLabel}",
+            style: AppThemeTextStyles.impactText.copyWith(
+              color: habitColor,
+            )),
+        Gap(10),
         InkWell(
           onTap: () {
             userStateNotifier.incrementHabit(widget.habit.id);
@@ -33,8 +39,8 @@ class HabitTileState extends ConsumerState<HabitTile> {
             //TODO: Stats page
             LOG.i("Should open stats page for ${widget.habit.name}");
           },
-          customBorder: new CircleBorder(),
-          splashColor: habitColor,
+          customBorder: const CircleBorder(),
+          splashColor: habitColor.withAlpha(100),
           child: Stack(
             alignment: Alignment.center,
             children: [
@@ -48,18 +54,27 @@ class HabitTileState extends ConsumerState<HabitTile> {
                   backgroundColor: Colors.grey.shade200,
                 ),
               ),
-              Icon(
-                IconData(
-                  widget.habit.iconHexId,
-                  fontFamily: "MaterialIcons",
-                ),
-                size: 40,
-                color: habitColor,
+              Column(
+                children: [
+                  Icon(
+                    IconData(
+                      widget.habit.iconHexId,
+                      fontFamily: "MaterialIcons",
+                    ),
+                    size: 30,
+                    color: habitColor,
+                  ),
+                  Text(
+                    "${(widget.habit.todayValue / widget.habit.dailyGoal * 100).toStringAsFixed(1)}%",
+                    style: AppThemeTextStyles.buttonText
+                        .copyWith(color: habitColor),
+                  )
+                ],
               ),
             ],
           ),
         ),
-        Gap(10),
+        const Gap(10),
         Text(
           widget.habit.name,
           style: AppThemeTextStyles.buttonText.copyWith(color: habitColor),

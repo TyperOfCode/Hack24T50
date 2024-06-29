@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:collection/collection.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:step/data/fake_data.dart';
@@ -40,7 +42,9 @@ class UserStateNotifier extends StateNotifier<User> {
           "incrementHabit: Habit should not be null here and index should not be -1.");
     }
 
-    habit = habit.copyWith(todayValue: habit.todayValue + habit.incrementValue);
+    habit = habit.copyWith(
+        todayValue:
+            min(habit.todayValue + habit.incrementValue, habit.maxValue));
 
     habitList.removeAt(index);
     habitList.insert(index, habit);
