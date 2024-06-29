@@ -23,14 +23,15 @@ class HabitTileState extends ConsumerState<HabitTile> {
     var userStateNotifier = ref.watch(userStateProvider.notifier);
     Color habitColor = Color(widget.habit.hexColor);
 
+    String formattedTodayValue = widget.habit.todayValue.toString();
+
+    if (widget.habit.todayValue == widget.habit.todayValue.roundToDouble()) {
+      // today value is integer
+      formattedTodayValue = widget.habit.todayValue.round().toString();
+    }
+
     return Column(
       children: [
-        Text(
-            "${widget.habit.todayValue} / ${widget.habit.dailyGoal} ${widget.habit.unitLabel}",
-            style: AppThemeTextStyles.impactText.copyWith(
-              color: habitColor,
-            )),
-        Gap(10),
         InkWell(
           onTap: () {
             userStateNotifier.incrementHabit(widget.habit.id);
@@ -45,39 +46,45 @@ class HabitTileState extends ConsumerState<HabitTile> {
             alignment: Alignment.center,
             children: [
               SizedBox(
-                width: 80,
-                height: 80,
+                width: 100,
+                height: 100,
                 child: CircularProgressIndicator(
                   value: widget.habit.todayValue / widget.habit.dailyGoal,
-                  strokeWidth: 8.0,
+                  strokeWidth: 10.0,
                   valueColor: AlwaysStoppedAnimation<Color>(habitColor),
-                  backgroundColor: Colors.grey.shade200,
+                  backgroundColor: AppThemeColors.background800,
+                  strokeCap: StrokeCap.round,
                 ),
               ),
-              Column(
-                children: [
-                  Icon(
-                    IconData(
-                      widget.habit.iconHexId,
-                      fontFamily: "MaterialIcons",
+              Container(
+                width: 100,
+                height: 100,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: habitColor,
+                    )),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      IconData(
+                        widget.habit.iconHexId,
+                        fontFamily: "MaterialIcons",
+                      ),
+                      size: 40,
+                      color: habitColor,
                     ),
-                    size: 30,
-                    color: habitColor,
-                  ),
-                  Text(
-                    "${(widget.habit.todayValue / widget.habit.dailyGoal * 100).toStringAsFixed(1)}%",
-                    style: AppThemeTextStyles.buttonText
-                        .copyWith(color: habitColor),
-                  )
-                ],
+                    Text(
+                      "$formattedTodayValue ${widget.habit.unitLabel}",
+                      style: AppThemeTextStyles.buttonText
+                          .copyWith(color: habitColor),
+                    )
+                  ],
+                ),
               ),
             ],
           ),
-        ),
-        const Gap(10),
-        Text(
-          widget.habit.name,
-          style: AppThemeTextStyles.buttonText.copyWith(color: habitColor),
         ),
       ],
     );

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:gap/gap.dart';
 import 'package:step/data/repositories/user_handler.dart';
 import 'package:step/domain/models.dart';
 import 'package:step/global_logger.dart';
@@ -24,14 +26,25 @@ class HomePage extends ConsumerWidget {
       },
       child: Scaffold(
         backgroundColor: AppThemeColors.background500,
-        body: Container(
-          alignment: Alignment.center,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              createHabitGridView(currentUser.habits) // GridView
-            ],
-          ),
+        body: Stack(
+          children: [
+            Positioned.fill(
+              child: SvgPicture.asset(
+                'assets/home_splash.svg',
+                alignment: Alignment.topCenter,
+              ),
+            ),
+            Container(
+              alignment: Alignment.center,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Gap(100),
+                  createHabitGridView(currentUser.habits) // GridView
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );
