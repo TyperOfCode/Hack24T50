@@ -8,6 +8,7 @@ enum AppPaths {
   buddyScreen("/buddy"),
   homeScreen("/"),
   addHabitScreen("/add-habit"),
+  statScreen("/stat"),
   notFoundScreen("/:_(.*)");
 
   const AppPaths(this.path);
@@ -74,6 +75,10 @@ Provider<GoRouter> goRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: AppPaths.addHabitScreen.path,
         builder: (BuildContext context, GoRouterState state) => AddHabitPopup (),
+      ),
+      GoRoute(
+        path: AppPaths.statScreen.path,
+        builder: (BuildContext context, GoRouterState state) => StatScreen (),
       ),
     ],
   );
