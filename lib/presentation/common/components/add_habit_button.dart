@@ -4,6 +4,7 @@ import 'package:step/data/fake_data.dart';
 import 'package:step/data/repositories/user_handler.dart';
 import 'package:step/presentation/common/styles/styles.dart';
 import 'package:step/presentation/screens/screens.dart';
+import 'package:step/presentation/popups/popups.dart';
 import 'package:step/routes.dart';
 
 class AddHabitButton extends ConsumerWidget {
