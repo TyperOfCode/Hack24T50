@@ -83,14 +83,16 @@ class HabitTileState extends ConsumerState<HabitTile> {
                           ? AppThemeColors.background500
                           : habitColor,
                     ),
-                    Text(
-                      "$formattedTodayValue ${widget.habit.unitLabel}",
-                      style: AppThemeTextStyles.buttonText.copyWith(
-                        color: isCompleted
-                            ? AppThemeColors.background500
-                            : habitColor,
-                      ),
-                    )
+                    !widget.habit.isMeasurable
+                        ? Container()
+                        : Text(
+                            "$formattedTodayValue ${widget.habit.unitLabel}",
+                            style: AppThemeTextStyles.buttonText.copyWith(
+                              color: isCompleted
+                                  ? AppThemeColors.background500
+                                  : habitColor,
+                            ),
+                          )
                   ],
                 ),
               ),

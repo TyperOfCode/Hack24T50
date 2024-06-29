@@ -21,6 +21,8 @@ class HomePage extends ConsumerWidget {
 
     DateTime now = DateTime.now();
 
+    Size screenSize = MediaQuery.of(context).size;
+
     return GestureDetector(
       onHorizontalDragEnd: (details) {
         if (details.primaryVelocity! < 0) {
@@ -37,13 +39,9 @@ class HomePage extends ConsumerWidget {
                 alignment: Alignment.topCenter,
               ),
             ),
-            Positioned.fromRelativeRect(
-              rect: const RelativeRect.fromLTRB(
-                25,
-                110,
-                100,
-                550,
-              ),
+            Positioned(
+              left: 30,
+              top: 100,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -66,16 +64,21 @@ class HomePage extends ConsumerWidget {
                 ],
               ),
             ),
+            const Positioned(
+              right: 20,
+              top: 180,
+              child: AddHabitButton(),
+            ),
             Container(
               alignment: Alignment.center,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Gap(100),
+                  const Spacer(),
                   createHabitGridView(currentUser.habits) // GridView
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -83,21 +86,20 @@ class HomePage extends ConsumerWidget {
   }
 }
 
-GridView createHabitGridView(List<Habit> habits) {
-  return GridView.count(
-    padding: const EdgeInsets.all(15),
-    shrinkWrap: true,
-    crossAxisCount: 2,
-    crossAxisSpacing: 0,
-    mainAxisSpacing: 10,
-    children: [
-        ...habits
-        .map(
-          (e) => HabitTile(habit: e),
-        )
-        .toList(), 
-        const AddHabitButton(),
-        ],
-        
+Widget createHabitGridView(List<Habit> habits) {
+  return Container(
+    height: 500,
+    child: GridView.count(
+      padding: const EdgeInsets.all(15),
+      shrinkWrap: true,
+      crossAxisCount: 2,
+      crossAxisSpacing: 0,
+      mainAxisSpacing: 10,
+      children: habits
+          .map(
+            (e) => HabitTile(habit: e),
+          )
+          .toList(),
+    ),
   );
 }
