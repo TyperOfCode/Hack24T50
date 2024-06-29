@@ -146,7 +146,7 @@ class FakeData {
     id: "1241",
     iconHexId: 0xf06c3, // Gymnastics icon
     unitLabel: "",
-    hexColor: 0xFF7EECF3,
+    hexColor: 0xFF456260,
     isMeasurable: false,
     displayed: false,
     todayValue: 0,
@@ -219,7 +219,8 @@ class FakeData {
       goOutside,
       socialize,
       brushTeeth,
-      shower
+      shower,
+      exercise
     ];
   }
 }

@@ -27,7 +27,7 @@ class SuggestedHabitPopup extends ConsumerWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              "Add Habits",
+              "Add a Step",
               style: AppThemeTextStyles
                 .titleText
                 .copyWith(
