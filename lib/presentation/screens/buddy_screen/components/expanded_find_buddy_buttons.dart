@@ -20,8 +20,13 @@ class ExpandedFindBuddyButtons extends ConsumerWidget {
           child: ElevatedButton(
             onPressed: () {
               // Find Buddy
-              String userId = userStateNotifier.getRandomUserId(
+              String? userId = userStateNotifier.getRandomUserId(
                   excludeList: userStateNotifier.getCurrentUser().buddyIds);
+
+              if (userId == null) {
+                return;
+              }
+
               userStateNotifier.addBuddy(userId);
             },
             style: const ButtonStyle(

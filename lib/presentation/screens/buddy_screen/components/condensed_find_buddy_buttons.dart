@@ -23,10 +23,13 @@ class CondensedFindBuddyButtons extends ConsumerWidget {
               // Find Buddy
               var user = userStateNotifier.getCurrentUser();
 
-              String userId =
+              String? userId =
                   userStateNotifier.getRandomUserId(excludeList: user.buddyIds);
-              LOG.d(userId);
-              LOG.d(user.buddyIds);
+
+              if (userId == null) {
+                return;
+              }
+
               userStateNotifier.addBuddy(userId);
             },
             icon: const Icon(

@@ -84,11 +84,15 @@ class UserStateNotifier extends StateNotifier<User> {
     return user?.toUserStats();
   }
 
-  String getRandomUserId({List<String>? excludeList}) {
+  String? getRandomUserId({List<String>? excludeList}) {
     var users = FakeData.getAllUsers();
 
     if (excludeList != null) {
       users = users.where((e) => !excludeList.contains(e.userId)).toList();
+    }
+
+    if (users.isEmpty) {
+      return null;
     }
 
     return (users..shuffle()).first.userId;
