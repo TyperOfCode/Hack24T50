@@ -13,9 +13,14 @@ class StepApp extends ConsumerWidget {
       DeviceOrientation.portraitUp,
     ]);
 
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [
+      SystemUiOverlay.top,
+    ]);
+
     final goRouter = ref.watch(goRouterProvider);
 
     return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       title: 'Step',
       theme: ThemeData(
         textTheme: const TextTheme(),

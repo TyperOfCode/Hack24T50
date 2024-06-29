@@ -6,7 +6,7 @@ class FakeData {
     id: "1234",
     iconHexId: 0xf0695, // Water drop
     unitLabel: "L",
-    hexColor: 0xFF342D91,
+    hexColor: 0xFF737098,
     isMeasurable: true,
     displayed: true,
     todayValue: 0,
@@ -25,7 +25,7 @@ class FakeData {
     id: "1235",
     iconHexId: 0xeecb, // Snooze icon
     unitLabel: "H",
-    hexColor: 0xFF662D91,
+    hexColor: 0xFF8F9FD3,
     isMeasurable: true,
     displayed: true,
     todayValue: 0,
@@ -44,7 +44,7 @@ class FakeData {
     id: "1236",
     iconHexId: 0xe532, // Restaurant icon
     unitLabel: " meals",
-    hexColor: 0x825B4A,
+    hexColor: 0xFF825B4A,
     isMeasurable: true,
     displayed: true,
     todayValue: 0,
@@ -82,7 +82,7 @@ class FakeData {
     id: "1238",
     iconHexId: 0xe231, // People icon
     unitLabel: "",
-    hexColor: 0xE75B5B,
+    hexColor: 0xFFE75B5B,
     isMeasurable: false,
     displayed: true,
     todayValue: 0,
@@ -101,7 +101,7 @@ class FakeData {
     id: "1239",
     iconHexId: 0xe167, // Brush icon
     unitLabel: "",
-    hexColor: 0x9A9A9A,
+    hexColor: 0xFF9A9A9A,
     isMeasurable: true,
     displayed: true,
     todayValue: 0,
@@ -120,7 +120,7 @@ class FakeData {
     id: "1240",
     iconHexId: 0xe5a0, // Shower icon
     unitLabel: "",
-    hexColor: 0x8F9FD3,
+    hexColor: 0xFF8F9FD3,
     isMeasurable: false,
     displayed: true,
     todayValue: 0,
@@ -140,6 +140,14 @@ class FakeData {
   ]);
 
   static List<Habit> getAllHabits() {
-    return [drinkWater, sleep, eatMeal, goOutside, socialize, brushTeeth, shower];
+    return [
+      drinkWater,
+      sleep,
+      eatMeal,
+      goOutside,
+      socialize,
+      brushTeeth,
+      shower
+    ];
   }
 }

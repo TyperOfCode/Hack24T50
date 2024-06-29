@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:step/data/fake_data.dart';
+import 'package:step/data/repositories/user_handler.dart';
+import 'package:step/presentation/common/styles/styles.dart';
+import 'package:step/presentation/screens/screens.dart';
 import 'package:step/routes.dart';
 
 class AddHabitButton extends ConsumerWidget {
@@ -7,15 +11,20 @@ class AddHabitButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var goRouter = ref.watch(goRouterProvider);
-    const color = Color.fromRGBO(255, 255, 255, 10);
+    const color = AppThemeColors.background500;
+    var userStateNotifier = ref.watch(userStateProvider.notifier);
 
-    return InkWell(onTap: () {
+    return InkWell(
+      onTap: () {
         // userStateNotifier.addHabit(FakeData.placeholder);
-        goRouter.go(AppPaths.addHabitScreen.path);
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AddHabitScreen();
+            });
       },
       customBorder: const CircleBorder(),
-      splashColor: color,
+      radius: 100,
       child: Stack(
         alignment: Alignment.center,
         children: [
@@ -23,7 +32,7 @@ class AddHabitButton extends ConsumerWidget {
             width: 80,
             height: 80,
             child: CircularProgressIndicator(
-              value: 100,
+              value: 1,
               strokeWidth: 8.0,
               valueColor: const AlwaysStoppedAnimation<Color>(color),
               backgroundColor: Colors.grey.shade200,

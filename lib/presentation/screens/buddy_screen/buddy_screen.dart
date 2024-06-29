@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:step/global_logger.dart';
 import 'package:step/presentation/common/styles/styles.dart';
 import 'package:step/routes.dart';
@@ -21,17 +22,27 @@ class BuddyPage extends ConsumerWidget {
       },
       child: Scaffold(
         backgroundColor: AppThemeColors.background500,
-        body: Container(
-          alignment: Alignment.center,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "Buddy Screen",
-                style: AppThemeTextStyles.defaultText,
+        body: Stack(
+          children: [
+            Positioned.fill(
+              child: SvgPicture.asset(
+                'assets/buddy_splash.svg',
+                alignment: Alignment.topCenter,
               ),
-            ],
-          ),
+            ),
+            Container(
+              alignment: Alignment.center,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Buddy Screen",
+                    style: AppThemeTextStyles.defaultText,
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
