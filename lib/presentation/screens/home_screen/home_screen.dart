@@ -5,6 +5,7 @@ import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
 import 'package:step/data/repositories/user_handler.dart';
 import 'package:step/domain/models.dart';
+import 'package:step/gen/assets.gen.dart';
 import 'package:step/presentation/common/components/add_habit_button.dart';
 import 'package:step/presentation/common/components/habit_tile.dart';
 import 'package:step/presentation/common/styles/styles.dart';
@@ -35,7 +36,7 @@ class HomePage extends ConsumerWidget {
           children: [
             Positioned.fill(
               child: SvgPicture.asset(
-                'assets/home_splash.svg',
+                Assets.homeSplash,
                 alignment: Alignment.topCenter,
               ),
             ),
