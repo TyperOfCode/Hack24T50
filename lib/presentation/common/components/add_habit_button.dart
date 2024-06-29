@@ -21,7 +21,7 @@ class AddHabitButton extends ConsumerWidget {
         showDialog(
             context: context,
             builder: (BuildContext context) {
-              return AddHabitScreen();
+              return AddHabitPopup();
             });
       },
       customBorder: const CircleBorder(),
