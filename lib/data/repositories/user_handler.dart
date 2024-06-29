@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:collection/collection.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:step/data/fake_data.dart';
 import 'package:step/domain/models.dart';
@@ -17,6 +18,13 @@ class UserStateNotifier extends StateNotifier<User> {
 
   void addHabit(Habit habit) {
     List<Habit> habitList = state.habits.map((e) => e).toList();
+
+    Habit? existing = habitList.firstWhereOrNull((e) => e.id == habit.id);
+
+    if (existing != null) {
+      return;
+    }
+
     habitList.add(habit);
 
     state = state.copyWith(habits: habitList);
@@ -58,8 +66,8 @@ class UserStateNotifier extends StateNotifier<User> {
       habit = habit.copyWith(todayValue: habit.todayValue == 1 ? 0 : 1);
     } else {
       habit = habit.copyWith(
-        todayValue:
-          min(habit.todayValue + habit.incrementValue, habit.maxValue));
+          todayValue:
+              min(habit.todayValue + habit.incrementValue, habit.maxValue));
     }
 
     habitList.removeAt(index);

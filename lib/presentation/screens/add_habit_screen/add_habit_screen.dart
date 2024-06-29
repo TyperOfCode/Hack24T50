@@ -10,29 +10,40 @@ class AddHabitScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var goRouter = ref.watch(goRouterProvider);
     var userNotifier = ref.watch(userStateProvider.notifier);
     User currentUser = ref.watch(userStateProvider);
     List<Habit> availableHabits = currentUser.availableHabits();
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Add Habit'),
-      ),
-      body: ListView.builder(
-        itemCount: availableHabits.length,
-        itemBuilder: (context, index) {
-          Habit habit = availableHabits[index];
-          return InkWell(
-            onTap: () {
-              userNotifier.addHabit(habit);
-              goRouter.go(AppPaths.homeScreen.path);
-            },
-            child: Row(children: [
-              Text(habit.name, style: AppThemeTextStyles.buttonText),
-            ],)
-          );
-        },
+    return Dialog(
+      child: Column(
+        children: [
+          Text(
+            "Add Habit",
+            style: AppThemeTextStyles.titleText,
+          ),
+          Spacer(),
+          ConstrainedBox(
+            constraints: BoxConstraints(
+              maxHeight: 300,
+            ),
+            child: ListView.builder(
+              itemCount: availableHabits.length,
+              itemBuilder: (context, index) {
+                Habit habit = availableHabits[index];
+                return InkWell(
+                    onTap: () {
+                      userNotifier.addHabit(habit);
+                      Navigator.pop(context);
+                    },
+                    child: Row(
+                      children: [
+                        Text(habit.name, style: AppThemeTextStyles.buttonText),
+                      ],
+                    ));
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

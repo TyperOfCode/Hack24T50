@@ -6,7 +6,7 @@ class FakeData {
     id: "1234",
     iconHexId: 0xf0695, // Water drop
     unitLabel: "L",
-    hexColor: 0xFF342D91,
+    hexColor: 0xFF737098,
     isMeasurable: true,
     displayed: true,
     todayValue: 0,
@@ -25,7 +25,7 @@ class FakeData {
     id: "1235",
     iconHexId: 0xeecb, // Snooze icon
     unitLabel: "H",
-    hexColor: 0xFF662D91,
+    hexColor: 0xFF8F9FD3,
     isMeasurable: true,
     displayed: true,
     todayValue: 0,

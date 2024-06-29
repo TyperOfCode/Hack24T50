@@ -48,6 +48,7 @@ dependencies:
   google_fonts: ^6.2.0
 
   flutter_dotenv: ^5.1.0
+  flutter_svg: ^2.0.10+1
 
 dev_dependencies:
   flutter_test:
@@ -77,8 +78,9 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
-  # assets:
-  #   - .env
+  assets:
+    - assets/buddy_splash.svg
+    - assets/home_splash.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

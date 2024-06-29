@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:gap/gap.dart';
+import 'package:intl/intl.dart';
 import 'package:step/data/repositories/user_handler.dart';
 import 'package:step/domain/models.dart';
 import 'package:step/presentation/common/components/add_habit_button.dart';
@@ -16,6 +19,10 @@ class HomePage extends ConsumerWidget {
 
     User currentUser = ref.watch(userStateProvider);
 
+    DateTime now = DateTime.now();
+
+    Size screenSize = MediaQuery.of(context).size;
+
     return GestureDetector(
       onHorizontalDragEnd: (details) {
         if (details.primaryVelocity! < 0) {
@@ -24,35 +31,75 @@ class HomePage extends ConsumerWidget {
       },
       child: Scaffold(
         backgroundColor: AppThemeColors.background500,
-        body: Container(
-          alignment: Alignment.center,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              createHabitGridView(currentUser.habits) // GridView
-            ],
-          ),
+        body: Stack(
+          children: [
+            Positioned.fill(
+              child: SvgPicture.asset(
+                'assets/home_splash.svg',
+                alignment: Alignment.topCenter,
+              ),
+            ),
+            Positioned(
+              left: 30,
+              top: 100,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    now.day.toString(),
+                    style: AppThemeTextStyles.impactText.copyWith(
+                      fontSize: 50,
+                      color: AppThemeColors.accent,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                  const Gap(5),
+                  Text(
+                    DateFormat('MMMM').format(now),
+                    style: AppThemeTextStyles.impactText.copyWith(
+                      fontSize: 40,
+                      color: AppThemeColors.accent,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const Positioned(
+              right: 20,
+              top: 180,
+              child: AddHabitButton(),
+            ),
+            Container(
+              alignment: Alignment.center,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Spacer(),
+                  createHabitGridView(currentUser.habits) // GridView
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
 }
 
-GridView createHabitGridView(List<Habit> habits) {
-  return GridView.count(
-    padding: const EdgeInsets.all(15),
-    shrinkWrap: true,
-    crossAxisCount: 2,
-    crossAxisSpacing: 0,
-    mainAxisSpacing: 10,
-    children: [
-        ...habits
-        .map(
-          (e) => HabitTile(habit: e),
-        )
-        .toList(), 
-        const AddHabitButton(),
-        ],
-        
+Widget createHabitGridView(List<Habit> habits) {
+  return Container(
+    height: 500,
+    child: GridView.count(
+      padding: const EdgeInsets.all(15),
+      shrinkWrap: true,
+      crossAxisCount: 2,
+      crossAxisSpacing: 0,
+      mainAxisSpacing: 10,
+      children: habits
+          .map(
+            (e) => HabitTile(habit: e),
+          )
+          .toList(),
+    ),
   );
 }
