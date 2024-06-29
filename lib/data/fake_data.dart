@@ -59,13 +59,13 @@ class FakeData {
   );
 
   static Habit goOutside = const Habit(
-    name: "Enjoying The Outdoors",
+    name: "Go Outdoors",
     id: "1237",
-    iconHexId: 0x407C4E, // Nature icon
+    iconHexId: 0xe22f, // Nature icon
     unitLabel: "",
     hexColor: 0xFF662D91,
     isMeasurable: false,
-    displayed: true,
+    displayed: false,
     todayValue: 0,
     incrementValue: 1,
     dailyGoal: 1,
@@ -84,7 +84,7 @@ class FakeData {
     unitLabel: "",
     hexColor: 0xFFE75B5B,
     isMeasurable: false,
-    displayed: true,
+    displayed: false,
     todayValue: 0,
     incrementValue: 1,
     dailyGoal: 1,
@@ -103,7 +103,7 @@ class FakeData {
     unitLabel: "",
     hexColor: 0xFF9A9A9A,
     isMeasurable: true,
-    displayed: true,
+    displayed: false,
     todayValue: 0,
     incrementValue: 1,
     dailyGoal: 2,
@@ -122,7 +122,7 @@ class FakeData {
     unitLabel: "",
     hexColor: 0xFF8F9FD3,
     isMeasurable: false,
-    displayed: true,
+    displayed: false,
     todayValue: 0,
     incrementValue: 1,
     dailyGoal: 1,

@@ -87,19 +87,35 @@ class HomePage extends ConsumerWidget {
 }
 
 Widget createHabitGridView(List<Habit> habits) {
-  return Container(
-    height: 500,
-    child: GridView.count(
-      padding: const EdgeInsets.all(15),
-      shrinkWrap: true,
-      crossAxisCount: 2,
-      crossAxisSpacing: 0,
-      mainAxisSpacing: 10,
-      children: habits
-          .map(
-            (e) => HabitTile(habit: e),
-          )
-          .toList(),
+  return SizedBox(
+    height: 510,
+    child: ShaderMask(
+      shaderCallback: (Rect bounds) {
+        return const LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Colors.transparent,
+            Colors.black,
+            Colors.black,
+            Colors.transparent
+          ],
+          stops: [0.0, 0.025, 0.9, 1],
+        ).createShader(bounds);
+      },
+      blendMode: BlendMode.dstIn,
+      child: GridView.count(
+        padding: const EdgeInsets.all(15),
+        shrinkWrap: true,
+        crossAxisCount: 2,
+        crossAxisSpacing: 0,
+        mainAxisSpacing: 10,
+        children: habits
+            .map(
+              (e) => HabitTile(habit: e),
+            )
+            .toList(),
+      ),
     ),
   );
 }

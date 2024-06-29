@@ -99,6 +99,15 @@ class HabitTileState extends ConsumerState<HabitTile> {
             ],
           ),
         ),
+        Gap(10),
+        isCompleted
+            ? Icon(Icons.check_circle, color: habitColor, size: 20)
+            : Text(
+                widget.habit.name,
+                style: AppThemeTextStyles.defaultText.copyWith(
+                  color: habitColor,
+                ),
+              )
       ],
     );
   }
