@@ -15,6 +15,7 @@ class User with _$User {
     // Properties
     required String displayName,
     required List<Habit> habits,
+    required List<String> buddyIds,
   }) = _User;
 
   const User._();

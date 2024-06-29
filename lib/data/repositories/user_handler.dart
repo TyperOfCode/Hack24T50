@@ -12,7 +12,7 @@ class UserStateNotifier extends StateNotifier<User> {
           _initialUser,
         );
 
-  User? getCurrentUser() {
+  User getCurrentUser() {
     return state;
   }
 
@@ -76,9 +76,7 @@ class UserStateNotifier extends StateNotifier<User> {
     state = state.copyWith(habits: habitList);
   }
 
-  void getUserStats(String userId) {
-    
-  }
+  void getUserStats(String userId) {}
 }
 
 final userStateProvider = StateNotifierProvider<UserStateNotifier, User>(

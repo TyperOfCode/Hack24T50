@@ -141,6 +141,7 @@ class FakeData {
       FakeData.drinkWater,
       FakeData.sleep,
     ],
+    buddyIds: [],
   );
 
   static User kaianiUser = User(
@@ -150,6 +151,7 @@ class FakeData {
       drinkWater,
       sleep,
     ],
+    buddyIds: [],
   );
 
   static User sophiaUser = User(
@@ -159,6 +161,7 @@ class FakeData {
       drinkWater,
       sleep,
     ],
+    buddyIds: [],
   );
 
   static List<Habit> getAllHabits() {

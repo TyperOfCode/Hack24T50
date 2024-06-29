@@ -6,8 +6,8 @@ import 'package:intl/intl.dart';
 import 'package:step/data/repositories/user_handler.dart';
 import 'package:step/domain/models.dart';
 import 'package:step/gen/assets.gen.dart';
-import 'package:step/presentation/common/components/add_habit_button.dart';
-import 'package:step/presentation/common/components/habit_tile.dart';
+import 'package:step/presentation/screens/add_habit_screen/components/add_habit_button.dart';
+import 'package:step/presentation/screens/add_habit_screen/components/habit_tile.dart';
 import 'package:step/presentation/common/styles/styles.dart';
 import 'package:step/routes.dart';
 
@@ -21,8 +21,6 @@ class HomePage extends ConsumerWidget {
     User currentUser = ref.watch(userStateProvider);
 
     DateTime now = DateTime.now();
-
-    Size screenSize = MediaQuery.of(context).size;
 
     return GestureDetector(
       onHorizontalDragEnd: (details) {
@@ -58,8 +56,9 @@ class HomePage extends ConsumerWidget {
                   Text(
                     DateFormat('MMMM').format(now),
                     style: AppThemeTextStyles.impactText.copyWith(
-                      fontSize: 40,
+                      fontSize: 50,
                       color: AppThemeColors.accent,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
                 ],
@@ -69,6 +68,18 @@ class HomePage extends ConsumerWidget {
               right: 20,
               top: 180,
               child: AddHabitButton(),
+            ),
+            Positioned(
+              right: 10,
+              top: 20,
+              child: IconButton(
+                onPressed: () => goRouter.go(AppPaths.buddyScreen.path),
+                icon: const Icon(
+                  Icons.keyboard_double_arrow_left,
+                  size: 60,
+                ),
+                color: AppThemeColors.background500.withAlpha(150),
+              ),
             ),
             Container(
               alignment: Alignment.center,

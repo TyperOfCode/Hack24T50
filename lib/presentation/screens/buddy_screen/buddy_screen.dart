@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:gap/gap.dart';
+import 'package:step/data/repositories/user_handler.dart';
+import 'package:step/domain/models/user_model/user_model.dart';
 import 'package:step/gen/assets.gen.dart';
-import 'package:step/global_logger.dart';
 import 'package:step/presentation/common/styles/styles.dart';
+import 'package:step/presentation/screens/buddy_screen/components/condensed_find_buddy_buttons.dart';
+import 'package:step/presentation/screens/buddy_screen/components/expanded_find_buddy_buttons.dart';
 import 'package:step/routes.dart';
 
 class BuddyPage extends ConsumerWidget {
@@ -12,8 +16,7 @@ class BuddyPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var goRouter = ref.watch(goRouterProvider);
-
-    LOG.i("Opened buddy screen");
+    var userStateNotifier = ref.watch(userStateProvider.notifier);
 
     return GestureDetector(
       onHorizontalDragEnd: (details) {
@@ -31,15 +34,37 @@ class BuddyPage extends ConsumerWidget {
                 alignment: Alignment.topCenter,
               ),
             ),
+            Positioned(
+              left: 10,
+              top: 20,
+              child: IconButton(
+                onPressed: () => goRouter.go(AppPaths.homeScreen.path),
+                icon: const Icon(
+                  Icons.keyboard_double_arrow_right,
+                  size: 60,
+                ),
+                color: AppThemeColors.background500.withAlpha(150),
+              ),
+            ),
+            Positioned(
+              right: 30,
+              top: 200,
+              child: Text(
+                "Buddies",
+                style: AppThemeTextStyles.impactText.copyWith(
+                  fontSize: 50,
+                  color: AppThemeColors.secondary,
+                  fontWeight: FontWeight.w900,
+                ),
+              ),
+            ),
             Container(
               alignment: Alignment.center,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text(
-                    "Buddy Screen",
-                    style: AppThemeTextStyles.defaultText,
-                  ),
+                  const Gap(300),
+                  ..._buildBuddyScreen(userStateNotifier.getCurrentUser()),
                 ],
               ),
             ),
@@ -48,4 +73,14 @@ class BuddyPage extends ConsumerWidget {
       ),
     );
   }
+}
+
+List<Widget> _buildBuddyScreen(User user) {
+  if (user.buddyIds.isEmpty) {
+    return [
+      ExpandedFindBuddyButtons(),
+    ];
+  }
+
+  return [];
 }
