@@ -22,6 +22,8 @@ class Habit with _$Habit {
     required int hexColor,
     // Stats
     required HabitStats stats,
+    // Messages
+    required List<String> messages,
   }) = _Habit;
 
   const Habit._();

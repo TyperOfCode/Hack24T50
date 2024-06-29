@@ -32,7 +32,8 @@ mixin _$Habit {
   double get maxValue => throw _privateConstructorUsedError;
   String get unitLabel => throw _privateConstructorUsedError;
   int get hexColor => throw _privateConstructorUsedError; // Stats
-  HabitStats get stats => throw _privateConstructorUsedError;
+  HabitStats get stats => throw _privateConstructorUsedError; // Messages
+  List<String> get messages => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -56,7 +57,8 @@ abstract class $HabitCopyWith<$Res> {
       double maxValue,
       String unitLabel,
       int hexColor,
-      HabitStats stats});
+      HabitStats stats,
+      List<String> messages});
 
   $HabitStatsCopyWith<$Res> get stats;
 }
@@ -86,6 +88,7 @@ class _$HabitCopyWithImpl<$Res, $Val extends Habit>
     Object? unitLabel = null,
     Object? hexColor = null,
     Object? stats = null,
+    Object? messages = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -136,6 +139,10 @@ class _$HabitCopyWithImpl<$Res, $Val extends Habit>
           ? _value.stats
           : stats // ignore: cast_nullable_to_non_nullable
               as HabitStats,
+      messages: null == messages
+          ? _value.messages
+          : messages // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 
@@ -167,7 +174,8 @@ abstract class _$$HabitImplCopyWith<$Res> implements $HabitCopyWith<$Res> {
       double maxValue,
       String unitLabel,
       int hexColor,
-      HabitStats stats});
+      HabitStats stats,
+      List<String> messages});
 
   @override
   $HabitStatsCopyWith<$Res> get stats;
@@ -196,6 +204,7 @@ class __$$HabitImplCopyWithImpl<$Res>
     Object? unitLabel = null,
     Object? hexColor = null,
     Object? stats = null,
+    Object? messages = null,
   }) {
     return _then(_$HabitImpl(
       name: null == name
@@ -246,6 +255,10 @@ class __$$HabitImplCopyWithImpl<$Res>
           ? _value.stats
           : stats // ignore: cast_nullable_to_non_nullable
               as HabitStats,
+      messages: null == messages
+          ? _value._messages
+          : messages // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -265,8 +278,10 @@ class _$HabitImpl extends _Habit {
       required this.maxValue,
       required this.unitLabel,
       required this.hexColor,
-      required this.stats})
-      : super._();
+      required this.stats,
+      required final List<String> messages})
+      : _messages = messages,
+        super._();
 
   factory _$HabitImpl.fromJson(Map<String, dynamic> json) =>
       _$$HabitImplFromJson(json);
@@ -299,10 +314,19 @@ class _$HabitImpl extends _Habit {
 // Stats
   @override
   final HabitStats stats;
+// Messages
+  final List<String> _messages;
+// Messages
+  @override
+  List<String> get messages {
+    if (_messages is EqualUnmodifiableListView) return _messages;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_messages);
+  }
 
   @override
   String toString() {
-    return 'Habit(name: $name, id: $id, iconHexId: $iconHexId, isMeasurable: $isMeasurable, displayed: $displayed, todayValue: $todayValue, incrementValue: $incrementValue, dailyGoal: $dailyGoal, maxValue: $maxValue, unitLabel: $unitLabel, hexColor: $hexColor, stats: $stats)';
+    return 'Habit(name: $name, id: $id, iconHexId: $iconHexId, isMeasurable: $isMeasurable, displayed: $displayed, todayValue: $todayValue, incrementValue: $incrementValue, dailyGoal: $dailyGoal, maxValue: $maxValue, unitLabel: $unitLabel, hexColor: $hexColor, stats: $stats, messages: $messages)';
   }
 
   @override
@@ -330,7 +354,8 @@ class _$HabitImpl extends _Habit {
                 other.unitLabel == unitLabel) &&
             (identical(other.hexColor, hexColor) ||
                 other.hexColor == hexColor) &&
-            (identical(other.stats, stats) || other.stats == stats));
+            (identical(other.stats, stats) || other.stats == stats) &&
+            const DeepCollectionEquality().equals(other._messages, _messages));
   }
 
   @JsonKey(ignore: true)
@@ -348,7 +373,8 @@ class _$HabitImpl extends _Habit {
       maxValue,
       unitLabel,
       hexColor,
-      stats);
+      stats,
+      const DeepCollectionEquality().hash(_messages));
 
   @JsonKey(ignore: true)
   @override
@@ -377,7 +403,8 @@ abstract class _Habit extends Habit {
       required final double maxValue,
       required final String unitLabel,
       required final int hexColor,
-      required final HabitStats stats}) = _$HabitImpl;
+      required final HabitStats stats,
+      required final List<String> messages}) = _$HabitImpl;
   const _Habit._() : super._();
 
   factory _Habit.fromJson(Map<String, dynamic> json) = _$HabitImpl.fromJson;
@@ -406,6 +433,8 @@ abstract class _Habit extends Habit {
   int get hexColor;
   @override // Stats
   HabitStats get stats;
+  @override // Messages
+  List<String> get messages;
   @override
   @JsonKey(ignore: true)
   _$$HabitImplCopyWith<_$HabitImpl> get copyWith =>
