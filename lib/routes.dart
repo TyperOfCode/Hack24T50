@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:step/presentation/popups/popups.dart';
 import 'package:step/presentation/screens/screens.dart';
 
 enum AppPaths {
@@ -73,7 +74,7 @@ Provider<GoRouter> goRouterProvider = Provider<GoRouter>((ref) {
       ),
       GoRoute(
         path: AppPaths.addHabitScreen.path,
-        builder: (BuildContext context, GoRouterState state) => AddHabitScreen (),
+        builder: (BuildContext context, GoRouterState state) => AddHabitPopup (),
       ),
       GoRoute(
         path: AppPaths.statScreen.path,
