@@ -19,6 +19,8 @@ _$HabitImpl _$$HabitImplFromJson(Map<String, dynamic> json) => _$HabitImpl(
       unitLabel: json['unitLabel'] as String,
       hexColor: (json['hexColor'] as num).toInt(),
       stats: HabitStats.fromJson(json['stats'] as Map<String, dynamic>),
+      messages:
+          (json['messages'] as List<dynamic>).map((e) => e as String).toList(),
     );
 
 Map<String, dynamic> _$$HabitImplToJson(_$HabitImpl instance) =>
@@ -35,6 +37,7 @@ Map<String, dynamic> _$$HabitImplToJson(_$HabitImpl instance) =>
       'unitLabel': instance.unitLabel,
       'hexColor': instance.hexColor,
       'stats': instance.stats,
+      'messages': instance.messages,
     };
 
 _$HabitStatsImpl _$$HabitStatsImplFromJson(Map<String, dynamic> json) =>

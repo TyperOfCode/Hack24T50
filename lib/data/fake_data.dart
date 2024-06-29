@@ -17,7 +17,8 @@ class FakeData {
       streak: 0,
       longestStreak: 0,
       days: [],
-    ),
+    ), 
+    messages: ["One more sip!", "Stay hydrated!", "Hydrate before you die-drate!"],
   );
 
   static Habit sleep = const Habit(
@@ -37,6 +38,7 @@ class FakeData {
       longestStreak: 0,
       days: [],
     ),
+    messages: ["Sleep tight!", "Rest up!", "Sweet dreams!"],
   );
 
   static Habit eatMeal = const Habit(
@@ -56,6 +58,7 @@ class FakeData {
       longestStreak: 0,
       days: [],
     ),
+    messages: ["Bone apple tea!", "Don't forget lunch!", "Did you eat today?"],
   );
 
   static Habit goOutside = const Habit(
@@ -75,6 +78,7 @@ class FakeData {
       longestStreak: 0,
       days: [],
     ),
+    messages: ["How about some fresh air?", "Time to touch grass.", "Lovely weather right?"],
   );
 
   static Habit socialize = const Habit(
@@ -94,6 +98,7 @@ class FakeData {
       longestStreak: 0,
       days: [],
     ),
+    messages: ["Movie night?", "Call your mother.", "Time to talk to a friend?"],
   );
 
   static Habit brushTeeth = const Habit(
@@ -113,6 +118,7 @@ class FakeData {
       longestStreak: 0,
       days: [],
     ),
+    messages: ["Keep those teeth shiny!", "Brushin' time!", "Maybe floss too?"],
   );
 
   static Habit shower = const Habit(
@@ -132,6 +138,27 @@ class FakeData {
       longestStreak: 0,
       days: [],
     ),
+    messages: ["Don't forget deodorant!", "Bath time!", "How about a nice relaxing shower?"],
+  );
+
+    static Habit exercise = const Habit(
+    name: "Exercise",
+    id: "1241",
+    iconHexId: 0xf06c3, // Gymnastics icon
+    unitLabel: "",
+    hexColor: 0xFF7EECF3,
+    isMeasurable: false,
+    displayed: false,
+    todayValue: 0,
+    incrementValue: 1,
+    dailyGoal: 1,
+    maxValue: 1,
+    stats: HabitStats(
+      streak: 0,
+      longestStreak: 0,
+      days: [],
+    ),
+    messages: ["Gym?", "Time to pump some iron!", "How bout' a run?"],
   );
 
   static User baseFakeUser = User(
