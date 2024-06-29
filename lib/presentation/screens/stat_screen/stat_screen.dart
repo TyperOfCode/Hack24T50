@@ -82,10 +82,10 @@ class _StatScreenState extends ConsumerState<StatScreen> {
               max: selectedHabit.maxValue,
               divisions: (selectedHabit.maxValue * 10).toInt(),
               onChanged: (value) {
-              currentUserNotifier.editHabit(
-                selectedHabit.id,
-                selectedHabit.copyWith(todayValue: value),
-              );
+                currentUserNotifier.editHabit(
+                  selectedHabit.id,
+                  selectedHabit.copyWith(todayValue: double.parse((value.clamp(0, selectedHabit.maxValue)).toStringAsFixed(1))),
+                );
               },
               label: selectedHabit.todayValue.toStringAsFixed(1),
               activeColor: habitColor,
