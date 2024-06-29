@@ -1,6 +1,4 @@
 import 'dart:math';
-
-import 'package:collection/collection.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:step/data/fake_data.dart';
 import 'package:step/domain/models.dart';
@@ -17,12 +15,26 @@ class UserStateNotifier extends StateNotifier<User> {
     return state;
   }
 
-  void addHabit() {
-    // TODO: Implement add habit
+  void addHabit(Habit habit) {
+    List<Habit> habitList = state.habits.map((e) => e).toList();
+    habitList.add(habit);
+
+    state = state.copyWith(habits: habitList);
+  }
+
+  void removeHabit(Habit habit) {
+    List<Habit> habitList = state.habits.map((e) => e).toList();
+    habitList.remove(habit);
+
+    state = state.copyWith(habits: habitList);
   }
 
   void editHabit(String habitId, Habit newHabit) {
-    // TODO: Implement edit habit
+    List<Habit> habitList = state.habits.map((e) => e).toList();
+    habitList.removeWhere((element) => element.id == habitId);
+    habitList.add(newHabit);
+
+    state = state.copyWith(habits: habitList);
   }
 
   void incrementHabit(String habitId) {
@@ -42,9 +54,13 @@ class UserStateNotifier extends StateNotifier<User> {
           "incrementHabit: Habit should not be null here and index should not be -1.");
     }
 
-    habit = habit.copyWith(
+    if (!habit.isMeasurable) {
+      habit = habit.copyWith(todayValue: habit.todayValue == 1 ? 0 : 1);
+    } else {
+      habit = habit.copyWith(
         todayValue:
-            min(habit.todayValue + habit.incrementValue, habit.maxValue));
+          min(habit.todayValue + habit.incrementValue, habit.maxValue));
+    }
 
     habitList.removeAt(index);
     habitList.insert(index, habit);
