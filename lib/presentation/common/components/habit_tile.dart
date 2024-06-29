@@ -75,15 +75,18 @@ class HabitTileState extends ConsumerState<HabitTile> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(
-                      IconData(
-                        widget.habit.iconHexId,
-                        fontFamily: "MaterialIcons",
+                    Hero(
+                      tag: widget.habit.id,
+                      child: Icon(
+                        IconData(
+                          widget.habit.iconHexId,
+                          fontFamily: "MaterialIcons",
+                        ),
+                        size: 40,
+                        color: isCompleted
+                            ? AppThemeColors.background500
+                            : habitColor,
                       ),
-                      size: 40,
-                      color: isCompleted
-                          ? AppThemeColors.background500
-                          : habitColor,
                     ),
                     !widget.habit.isMeasurable
                         ? Container()
