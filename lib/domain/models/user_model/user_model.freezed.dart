@@ -21,7 +21,8 @@ User _$UserFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$User {
 // Id
-  String get userId => throw _privateConstructorUsedError; // Properties
+  String get userId => throw _privateConstructorUsedError;
+  String? get lastActivity => throw _privateConstructorUsedError; // Properties
   String get displayName => throw _privateConstructorUsedError;
   List<Habit> get habits => throw _privateConstructorUsedError;
   List<String> get buddyIds => throw _privateConstructorUsedError;
@@ -38,6 +39,7 @@ abstract class $UserCopyWith<$Res> {
   @useResult
   $Res call(
       {String userId,
+      String? lastActivity,
       String displayName,
       List<Habit> habits,
       List<String> buddyIds});
@@ -57,6 +59,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   @override
   $Res call({
     Object? userId = null,
+    Object? lastActivity = freezed,
     Object? displayName = null,
     Object? habits = null,
     Object? buddyIds = null,
@@ -66,6 +69,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
+      lastActivity: freezed == lastActivity
+          ? _value.lastActivity
+          : lastActivity // ignore: cast_nullable_to_non_nullable
+              as String?,
       displayName: null == displayName
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
@@ -91,6 +98,7 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
   @useResult
   $Res call(
       {String userId,
+      String? lastActivity,
       String displayName,
       List<Habit> habits,
       List<String> buddyIds});
@@ -107,6 +115,7 @@ class __$$UserImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userId = null,
+    Object? lastActivity = freezed,
     Object? displayName = null,
     Object? habits = null,
     Object? buddyIds = null,
@@ -116,6 +125,10 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
+      lastActivity: freezed == lastActivity
+          ? _value.lastActivity
+          : lastActivity // ignore: cast_nullable_to_non_nullable
+              as String?,
       displayName: null == displayName
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
@@ -137,6 +150,7 @@ class __$$UserImplCopyWithImpl<$Res>
 class _$UserImpl extends _User {
   const _$UserImpl(
       {required this.userId,
+      this.lastActivity,
       required this.displayName,
       required final List<Habit> habits,
       required final List<String> buddyIds})
@@ -150,6 +164,8 @@ class _$UserImpl extends _User {
 // Id
   @override
   final String userId;
+  @override
+  final String? lastActivity;
 // Properties
   @override
   final String displayName;
@@ -171,7 +187,7 @@ class _$UserImpl extends _User {
 
   @override
   String toString() {
-    return 'User(userId: $userId, displayName: $displayName, habits: $habits, buddyIds: $buddyIds)';
+    return 'User(userId: $userId, lastActivity: $lastActivity, displayName: $displayName, habits: $habits, buddyIds: $buddyIds)';
   }
 
   @override
@@ -180,6 +196,8 @@ class _$UserImpl extends _User {
         (other.runtimeType == runtimeType &&
             other is _$UserImpl &&
             (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.lastActivity, lastActivity) ||
+                other.lastActivity == lastActivity) &&
             (identical(other.displayName, displayName) ||
                 other.displayName == displayName) &&
             const DeepCollectionEquality().equals(other._habits, _habits) &&
@@ -191,6 +209,7 @@ class _$UserImpl extends _User {
   int get hashCode => Object.hash(
       runtimeType,
       userId,
+      lastActivity,
       displayName,
       const DeepCollectionEquality().hash(_habits),
       const DeepCollectionEquality().hash(_buddyIds));
@@ -212,6 +231,7 @@ class _$UserImpl extends _User {
 abstract class _User extends User {
   const factory _User(
       {required final String userId,
+      final String? lastActivity,
       required final String displayName,
       required final List<Habit> habits,
       required final List<String> buddyIds}) = _$UserImpl;
@@ -221,6 +241,8 @@ abstract class _User extends User {
 
   @override // Id
   String get userId;
+  @override
+  String? get lastActivity;
   @override // Properties
   String get displayName;
   @override

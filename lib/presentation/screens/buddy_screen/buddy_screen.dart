@@ -6,9 +6,12 @@ import 'package:step/data/repositories/user_handler.dart';
 import 'package:step/domain/models/user_model/user_model.dart';
 import 'package:step/gen/assets.gen.dart';
 import 'package:step/presentation/common/styles/styles.dart';
-import 'package:step/presentation/screens/buddy_screen/components/condensed_find_buddy_buttons.dart';
-import 'package:step/presentation/screens/buddy_screen/components/expanded_find_buddy_buttons.dart';
+
+import 'components/expanded_find_buddy_buttons.dart';
 import 'package:step/routes.dart';
+
+import 'components/condensed_find_buddy_buttons.dart';
+import 'components/buddy_tile/buddy_tile.dart';
 
 class BuddyPage extends ConsumerWidget {
   const BuddyPage({super.key});
@@ -17,6 +20,7 @@ class BuddyPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     var goRouter = ref.watch(goRouterProvider);
     var userStateNotifier = ref.watch(userStateProvider.notifier);
+    var userState = ref.watch(userStateProvider);
 
     return GestureDetector(
       onHorizontalDragEnd: (details) {
@@ -64,7 +68,10 @@ class BuddyPage extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   const Gap(300),
-                  ..._buildBuddyScreen(userStateNotifier.getCurrentUser()),
+                  _buildBuddyScreen(
+                    userState,
+                    userStateNotifier,
+                  )
                 ],
               ),
             ),
@@ -75,12 +82,26 @@ class BuddyPage extends ConsumerWidget {
   }
 }
 
-List<Widget> _buildBuddyScreen(User user) {
+Widget _buildBuddyScreen(User user, UserStateNotifier userStateNotifier) {
   if (user.buddyIds.isEmpty) {
-    return [
-      ExpandedFindBuddyButtons(),
-    ];
+    return ExpandedFindBuddyButtons();
   }
 
-  return [];
+  return Column(
+    children: [
+      CondensedFindBuddyButtons(),
+      Container(
+        constraints: BoxConstraints(maxHeight: 400),
+        child: ListView(children: [
+          ...user.buddyIds.map(
+            (buddyId) => Padding(
+              padding: const EdgeInsets.all(8.0),
+              child:
+                  BuddyTile(userStat: userStateNotifier.getUserStats(buddyId)),
+            ),
+          )
+        ]),
+      ),
+    ],
+  );
 }

@@ -76,7 +76,34 @@ class UserStateNotifier extends StateNotifier<User> {
     state = state.copyWith(habits: habitList);
   }
 
-  void getUserStats(String userId) {}
+  UserStats? getUserStats(String userId) {
+    var users = FakeData.getAllUsers();
+
+    var user = users.firstWhereOrNull((e) => e.userId == userId);
+
+    return user?.toUserStats();
+  }
+
+  String getRandomUserId({List<String>? excludeList}) {
+    var users = FakeData.getAllUsers();
+
+    if (excludeList != null) {
+      users = users.where((e) => !excludeList.contains(e.userId)).toList();
+    }
+
+    return (users..shuffle()).first.userId;
+  }
+
+  void addBuddy(String buddyId) {
+    var buddies = state.buddyIds.map((e) => e).toList();
+
+    if (buddies.contains(buddyId)) {
+      return;
+    }
+
+    buddies.add(buddyId);
+    state = state.copyWith(buddyIds: buddies);
+  }
 }
 
 final userStateProvider = StateNotifierProvider<UserStateNotifier, User>(
