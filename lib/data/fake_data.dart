@@ -134,10 +134,20 @@ class FakeData {
     ),
   );
 
-  static User baseFakeUser = User(userId: "fakeid", habits: [
-    FakeData.drinkWater,
-    FakeData.sleep,
-  ]);
+  static User baseFakeUser = User(
+    displayName: "You",
+    userId: "fakeid",
+    habits: [
+      FakeData.drinkWater,
+      FakeData.sleep,
+    ],
+  );
+
+  static User bobbyUser = User(
+    displayName: "Bob",
+    userId: "bobby",
+    habits: [],
+  );
 
   static List<Habit> getAllHabits() {
     return [

@@ -8,6 +8,7 @@ part of 'user_model.dart';
 
 _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
       userId: json['userId'] as String,
+      displayName: json['displayName'] as String,
       habits: (json['habits'] as List<dynamic>)
           .map((e) => Habit.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -16,5 +17,6 @@ _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
 Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
     <String, dynamic>{
       'userId': instance.userId,
+      'displayName': instance.displayName,
       'habits': instance.habits,
     };

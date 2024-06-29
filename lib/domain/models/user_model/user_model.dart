@@ -13,6 +13,7 @@ class User with _$User {
     // Id
     required String userId,
     // Properties
+    required String displayName,
     required List<Habit> habits,
   }) = _User;
 

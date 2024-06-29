@@ -75,6 +75,10 @@ class UserStateNotifier extends StateNotifier<User> {
 
     state = state.copyWith(habits: habitList);
   }
+
+  void getUserStats(String userId) {
+    
+  }
 }
 
 final userStateProvider = StateNotifierProvider<UserStateNotifier, User>(

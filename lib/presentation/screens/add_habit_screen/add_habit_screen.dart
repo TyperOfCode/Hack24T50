@@ -21,9 +21,9 @@ class AddHabitScreen extends ConsumerWidget {
             "Add Habit",
             style: AppThemeTextStyles.titleText,
           ),
-          Spacer(),
+          const Spacer(),
           ConstrainedBox(
-            constraints: BoxConstraints(
+            constraints: const BoxConstraints(
               maxHeight: 300,
             ),
             child: ListView.builder(

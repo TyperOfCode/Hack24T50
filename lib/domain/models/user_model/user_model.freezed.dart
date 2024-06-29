@@ -22,6 +22,7 @@ User _$UserFromJson(Map<String, dynamic> json) {
 mixin _$User {
 // Id
   String get userId => throw _privateConstructorUsedError; // Properties
+  String get displayName => throw _privateConstructorUsedError;
   List<Habit> get habits => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -34,7 +35,7 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res, User>;
   @useResult
-  $Res call({String userId, List<Habit> habits});
+  $Res call({String userId, String displayName, List<Habit> habits});
 }
 
 /// @nodoc
@@ -51,12 +52,17 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   @override
   $Res call({
     Object? userId = null,
+    Object? displayName = null,
     Object? habits = null,
   }) {
     return _then(_value.copyWith(
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      displayName: null == displayName
+          ? _value.displayName
+          : displayName // ignore: cast_nullable_to_non_nullable
               as String,
       habits: null == habits
           ? _value.habits
@@ -73,7 +79,7 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$$UserImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String userId, List<Habit> habits});
+  $Res call({String userId, String displayName, List<Habit> habits});
 }
 
 /// @nodoc
@@ -87,12 +93,17 @@ class __$$UserImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userId = null,
+    Object? displayName = null,
     Object? habits = null,
   }) {
     return _then(_$UserImpl(
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      displayName: null == displayName
+          ? _value.displayName
+          : displayName // ignore: cast_nullable_to_non_nullable
               as String,
       habits: null == habits
           ? _value._habits
@@ -105,7 +116,10 @@ class __$$UserImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$UserImpl extends _User {
-  const _$UserImpl({required this.userId, required final List<Habit> habits})
+  const _$UserImpl(
+      {required this.userId,
+      required this.displayName,
+      required final List<Habit> habits})
       : _habits = habits,
         super._();
 
@@ -116,8 +130,9 @@ class _$UserImpl extends _User {
   @override
   final String userId;
 // Properties
+  @override
+  final String displayName;
   final List<Habit> _habits;
-// Properties
   @override
   List<Habit> get habits {
     if (_habits is EqualUnmodifiableListView) return _habits;
@@ -127,7 +142,7 @@ class _$UserImpl extends _User {
 
   @override
   String toString() {
-    return 'User(userId: $userId, habits: $habits)';
+    return 'User(userId: $userId, displayName: $displayName, habits: $habits)';
   }
 
   @override
@@ -136,13 +151,15 @@ class _$UserImpl extends _User {
         (other.runtimeType == runtimeType &&
             other is _$UserImpl &&
             (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.displayName, displayName) ||
+                other.displayName == displayName) &&
             const DeepCollectionEquality().equals(other._habits, _habits));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, userId, const DeepCollectionEquality().hash(_habits));
+  int get hashCode => Object.hash(runtimeType, userId, displayName,
+      const DeepCollectionEquality().hash(_habits));
 
   @JsonKey(ignore: true)
   @override
@@ -161,6 +178,7 @@ class _$UserImpl extends _User {
 abstract class _User extends User {
   const factory _User(
       {required final String userId,
+      required final String displayName,
       required final List<Habit> habits}) = _$UserImpl;
   const _User._() : super._();
 
@@ -169,6 +187,8 @@ abstract class _User extends User {
   @override // Id
   String get userId;
   @override // Properties
+  String get displayName;
+  @override
   List<Habit> get habits;
   @override
   @JsonKey(ignore: true)
