@@ -1,16 +1,20 @@
-# step
+# Step
 
-A new Flutter project.
+A habbit building tool focused on simplicity and community. 
 
-## Getting Started
+Built with Flutter.
 
-This project is a starting point for a Flutter application.
+## Running the App
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### On a local machine
+For running the app in a developement make sure to install ['Flutter'](https://docs.flutter.dev/get-started/install). Currently, only the android version of the app has been tested, so you'll need to install everything required for flutter developement on android.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+To run the app, make sure this machine is connected to an android device. This can be a physical phone in developement mode connected via usb, or a running android emulator. To find the identity of your connected devices, you can enter
+
+`flutter devices`.
+
+
+This project has a non-default entry point. You'll have to specify it in the `run` command.
+
+`flutter run lib/entrypoints/prod/main_prod.dart -d`
