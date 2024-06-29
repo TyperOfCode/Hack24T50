@@ -5,6 +5,8 @@ import 'package:step/data/repositories/user_handler.dart';
 import 'package:step/domain/models/habit_model/habit_model.dart';
 import 'package:step/global_logger.dart';
 import 'package:step/presentation/common/styles/styles.dart';
+import 'package:step/presentation/controllers/app/app_controller.dart';
+import 'package:step/routes.dart';
 
 class HabitTile extends ConsumerStatefulWidget {
   final Habit habit;
@@ -21,6 +23,8 @@ class HabitTileState extends ConsumerState<HabitTile> {
   @override
   Widget build(BuildContext context) {
     var userStateNotifier = ref.watch(userStateProvider.notifier);
+    var goRouter = ref.watch(goRouterProvider);
+    var appStateNotifier = ref.watch(appStateProvider.notifier);
     Color habitColor = Color(widget.habit.hexColor);
 
     String formattedTodayValue = widget.habit.todayValue.toString();
@@ -39,8 +43,9 @@ class HabitTileState extends ConsumerState<HabitTile> {
             userStateNotifier.incrementHabit(widget.habit.id);
           },
           onLongPress: () {
-            //TODO: Stats page
             LOG.i("Should open stats page for ${widget.habit.name}");
+            appStateNotifier.selectHabitForStats(widget.habit);
+            goRouter.go(AppPaths.statScreen.path);
           },
           customBorder: const CircleBorder(),
           splashColor: habitColor.withAlpha(100),
@@ -73,15 +78,18 @@ class HabitTileState extends ConsumerState<HabitTile> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(
-                      IconData(
-                        widget.habit.iconHexId,
-                        fontFamily: "MaterialIcons",
+                    Hero(
+                      tag: widget.habit.id,
+                      child: Icon(
+                        IconData(
+                          widget.habit.iconHexId,
+                          fontFamily: "MaterialIcons",
+                        ),
+                        size: 40,
+                        color: isCompleted
+                            ? AppThemeColors.background500
+                            : habitColor,
                       ),
-                      size: 40,
-                      color: isCompleted
-                          ? AppThemeColors.background500
-                          : habitColor,
                     ),
                     !widget.habit.isMeasurable
                         ? Container()

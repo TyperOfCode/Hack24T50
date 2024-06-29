@@ -45,6 +45,10 @@ class UserStateNotifier extends StateNotifier<User> {
     state = state.copyWith(habits: habitList);
   }
 
+  Habit? getHabit(String habitId) {
+    return state.habits.firstWhereOrNull((e) => e.id == habitId);
+  }
+
   void incrementHabit(String habitId) {
     List<Habit> habitList = state.habits.map((e) => e).toList();
 

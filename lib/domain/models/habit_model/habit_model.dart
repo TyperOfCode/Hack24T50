@@ -32,6 +32,10 @@ class Habit with _$Habit {
     return 1;
   }
 
+  bool isCompleted() {
+    return todayValue >= dailyGoal;
+  }
+
   factory Habit.fromJson(Map<String, dynamic> json) => _$HabitFromJson(json);
 }
 
