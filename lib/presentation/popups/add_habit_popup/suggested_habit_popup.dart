@@ -13,28 +13,21 @@ class SuggestedHabitPopup extends ConsumerWidget {
     User currentUser = ref.watch(userStateProvider);
     List<Habit> availableHabits = currentUser.availableHabits();
 
-    return Dialog (
+    return Dialog(
       backgroundColor: AppThemeColors.background500,
       child: Padding(
-        padding: const EdgeInsets.only(
-          top: 40,
-          bottom: 40,
-          left: 20,
-          right: 20
-        ),
+        padding:
+            const EdgeInsets.only(top: 40, bottom: 40, left: 20, right: 20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
               "Add a Step",
-              style: AppThemeTextStyles
-                .titleText
-                .copyWith(
-                  fontWeight: FontWeight.w300, 
+              style: AppThemeTextStyles.titleText.copyWith(
+                  fontWeight: FontWeight.w300,
                   fontSize: 30.0,
-                  color: AppThemeColors.accent
-                ),
+                  color: AppThemeColors.accent),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
@@ -46,16 +39,16 @@ class SuggestedHabitPopup extends ConsumerWidget {
                 itemCount: availableHabits.length,
                 itemBuilder: (context, index) {
                   Habit habit = availableHabits[index];
-                  return _SuggestedHabitButton( () {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: _SuggestedHabitButton(() {
                       userNotifier.addHabit(habit);
                       Navigator.pop(context);
-                    }, 
-                    habit
+                    }, habit),
                   );
                 },
               ),
             ),
-
           ],
         ),
       ),
@@ -65,10 +58,10 @@ class SuggestedHabitPopup extends ConsumerWidget {
 
 @override
 class _SuggestedHabitButton extends StatelessWidget {
-  _SuggestedHabitButton(this.onPressed, Habit habit) : 
-    iconHexId = habit.iconHexId, 
-    habitName = habit.name,
-    habitColor = Color(habit.hexColor);
+  _SuggestedHabitButton(this.onPressed, Habit habit)
+      : iconHexId = habit.iconHexId,
+        habitName = habit.name,
+        habitColor = Color(habit.hexColor);
 
   final void Function()? onPressed;
   final int iconHexId;
@@ -78,16 +71,15 @@ class _SuggestedHabitButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onPressed,
-      splashColor: habitColor.withAlpha(100),
-      child: Padding(
-        padding: const EdgeInsets.all(5.0),
-        child: Row(
-          children: [
+        onTap: onPressed,
+        splashColor: habitColor.withAlpha(100),
+        child: Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: Row(children: [
             // Habit Icon
             Container(
-              height: 80,
-              width: 80,
+              height: 60,
+              width: 60,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(
@@ -100,25 +92,22 @@ class _SuggestedHabitButton extends StatelessWidget {
                   iconHexId,
                   fontFamily: "MaterialIcons",
                 ),
-                size: 40,
+                size: 30,
                 color: habitColor,
               ),
             ),
             const SizedBox(width: 10),
             Expanded(
               child: Text(
-                habitName, 
-                style: AppThemeTextStyles.buttonText
-                  .copyWith(
-                    fontSize: 27.0,
-                    color: habitColor,
+                habitName,
+                style: AppThemeTextStyles.buttonText.copyWith(
+                  fontSize: AppFontSizes.header1Size,
+                  color: habitColor,
                 ),
                 overflow: TextOverflow.clip,
               ),
             ),
-          ]
-        ),
-      )
-    );
+          ]),
+        ));
   }
 }
