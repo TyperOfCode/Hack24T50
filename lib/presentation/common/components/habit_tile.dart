@@ -30,6 +30,8 @@ class HabitTileState extends ConsumerState<HabitTile> {
       formattedTodayValue = widget.habit.todayValue.round().toString();
     }
 
+    bool isCompleted = widget.habit.todayValue >= widget.habit.dailyGoal;
+
     return Column(
       children: [
         InkWell(
@@ -52,7 +54,7 @@ class HabitTileState extends ConsumerState<HabitTile> {
                   value: widget.habit.todayValue / widget.habit.dailyGoal,
                   strokeWidth: 10.0,
                   valueColor: AlwaysStoppedAnimation<Color>(habitColor),
-                  backgroundColor: AppThemeColors.background800,
+                  backgroundColor: AppThemeColors.background500,
                   strokeCap: StrokeCap.round,
                 ),
               ),
@@ -60,10 +62,14 @@ class HabitTileState extends ConsumerState<HabitTile> {
                 width: 100,
                 height: 100,
                 decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: habitColor,
-                    )),
+                  color: isCompleted
+                      ? habitColor
+                      : const Color.fromARGB(0, 0, 0, 0),
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: habitColor,
+                  ),
+                ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -73,12 +79,17 @@ class HabitTileState extends ConsumerState<HabitTile> {
                         fontFamily: "MaterialIcons",
                       ),
                       size: 40,
-                      color: habitColor,
+                      color: isCompleted
+                          ? AppThemeColors.background500
+                          : habitColor,
                     ),
                     Text(
                       "$formattedTodayValue ${widget.habit.unitLabel}",
-                      style: AppThemeTextStyles.buttonText
-                          .copyWith(color: habitColor),
+                      style: AppThemeTextStyles.buttonText.copyWith(
+                        color: isCompleted
+                            ? AppThemeColors.background500
+                            : habitColor,
+                      ),
                     )
                   ],
                 ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:intl/intl.dart';
 import 'package:step/data/repositories/user_handler.dart';
 import 'package:step/domain/models.dart';
 import 'package:step/global_logger.dart';
@@ -17,6 +18,8 @@ class HomePage extends ConsumerWidget {
     var goRouter = ref.watch(goRouterProvider);
 
     User currentUser = ref.watch(userStateProvider);
+
+    DateTime now = DateTime.now();
 
     return GestureDetector(
       onHorizontalDragEnd: (details) {
@@ -34,12 +37,41 @@ class HomePage extends ConsumerWidget {
                 alignment: Alignment.topCenter,
               ),
             ),
+            Positioned.fromRelativeRect(
+              rect: const RelativeRect.fromLTRB(
+                25,
+                110,
+                100,
+                550,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    now.day.toString(),
+                    style: AppThemeTextStyles.impactText.copyWith(
+                      fontSize: 50,
+                      color: AppThemeColors.accent,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                  const Gap(5),
+                  Text(
+                    DateFormat('MMMM').format(now),
+                    style: AppThemeTextStyles.impactText.copyWith(
+                      fontSize: 40,
+                      color: AppThemeColors.accent,
+                    ),
+                  ),
+                ],
+              ),
+            ),
             Container(
               alignment: Alignment.center,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Gap(100),
+                  const Gap(100),
                   createHabitGridView(currentUser.habits) // GridView
                 ],
               ),
