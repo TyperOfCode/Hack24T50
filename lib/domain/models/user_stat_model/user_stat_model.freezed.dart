@@ -21,7 +21,9 @@ UserStats _$UserStatsFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$UserStats {
 // Id
-  String get userId => throw _privateConstructorUsedError; // Properties
+  String get userId => throw _privateConstructorUsedError;
+  String get displayedName => throw _privateConstructorUsedError; // Properties
+  String? get lastActivity => throw _privateConstructorUsedError;
   List<double> get habitScores => throw _privateConstructorUsedError;
   double get avgHabitScore => throw _privateConstructorUsedError;
   List<Habit> get displayedHabits => throw _privateConstructorUsedError;
@@ -39,6 +41,8 @@ abstract class $UserStatsCopyWith<$Res> {
   @useResult
   $Res call(
       {String userId,
+      String displayedName,
+      String? lastActivity,
       List<double> habitScores,
       double avgHabitScore,
       List<Habit> displayedHabits});
@@ -58,6 +62,8 @@ class _$UserStatsCopyWithImpl<$Res, $Val extends UserStats>
   @override
   $Res call({
     Object? userId = null,
+    Object? displayedName = null,
+    Object? lastActivity = freezed,
     Object? habitScores = null,
     Object? avgHabitScore = null,
     Object? displayedHabits = null,
@@ -67,6 +73,14 @@ class _$UserStatsCopyWithImpl<$Res, $Val extends UserStats>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
+      displayedName: null == displayedName
+          ? _value.displayedName
+          : displayedName // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastActivity: freezed == lastActivity
+          ? _value.lastActivity
+          : lastActivity // ignore: cast_nullable_to_non_nullable
+              as String?,
       habitScores: null == habitScores
           ? _value.habitScores
           : habitScores // ignore: cast_nullable_to_non_nullable
@@ -93,6 +107,8 @@ abstract class _$$UserStatsImplCopyWith<$Res>
   @useResult
   $Res call(
       {String userId,
+      String displayedName,
+      String? lastActivity,
       List<double> habitScores,
       double avgHabitScore,
       List<Habit> displayedHabits});
@@ -110,6 +126,8 @@ class __$$UserStatsImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userId = null,
+    Object? displayedName = null,
+    Object? lastActivity = freezed,
     Object? habitScores = null,
     Object? avgHabitScore = null,
     Object? displayedHabits = null,
@@ -119,6 +137,14 @@ class __$$UserStatsImplCopyWithImpl<$Res>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
+      displayedName: null == displayedName
+          ? _value.displayedName
+          : displayedName // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastActivity: freezed == lastActivity
+          ? _value.lastActivity
+          : lastActivity // ignore: cast_nullable_to_non_nullable
+              as String?,
       habitScores: null == habitScores
           ? _value._habitScores
           : habitScores // ignore: cast_nullable_to_non_nullable
@@ -140,6 +166,8 @@ class __$$UserStatsImplCopyWithImpl<$Res>
 class _$UserStatsImpl implements _UserStats {
   const _$UserStatsImpl(
       {required this.userId,
+      required this.displayedName,
+      this.lastActivity,
       required final List<double> habitScores,
       required this.avgHabitScore,
       required final List<Habit> displayedHabits})
@@ -152,9 +180,12 @@ class _$UserStatsImpl implements _UserStats {
 // Id
   @override
   final String userId;
+  @override
+  final String displayedName;
 // Properties
+  @override
+  final String? lastActivity;
   final List<double> _habitScores;
-// Properties
   @override
   List<double> get habitScores {
     if (_habitScores is EqualUnmodifiableListView) return _habitScores;
@@ -174,7 +205,7 @@ class _$UserStatsImpl implements _UserStats {
 
   @override
   String toString() {
-    return 'UserStats(userId: $userId, habitScores: $habitScores, avgHabitScore: $avgHabitScore, displayedHabits: $displayedHabits)';
+    return 'UserStats(userId: $userId, displayedName: $displayedName, lastActivity: $lastActivity, habitScores: $habitScores, avgHabitScore: $avgHabitScore, displayedHabits: $displayedHabits)';
   }
 
   @override
@@ -183,6 +214,10 @@ class _$UserStatsImpl implements _UserStats {
         (other.runtimeType == runtimeType &&
             other is _$UserStatsImpl &&
             (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.displayedName, displayedName) ||
+                other.displayedName == displayedName) &&
+            (identical(other.lastActivity, lastActivity) ||
+                other.lastActivity == lastActivity) &&
             const DeepCollectionEquality()
                 .equals(other._habitScores, _habitScores) &&
             (identical(other.avgHabitScore, avgHabitScore) ||
@@ -196,6 +231,8 @@ class _$UserStatsImpl implements _UserStats {
   int get hashCode => Object.hash(
       runtimeType,
       userId,
+      displayedName,
+      lastActivity,
       const DeepCollectionEquality().hash(_habitScores),
       avgHabitScore,
       const DeepCollectionEquality().hash(_displayedHabits));
@@ -217,6 +254,8 @@ class _$UserStatsImpl implements _UserStats {
 abstract class _UserStats implements UserStats {
   const factory _UserStats(
       {required final String userId,
+      required final String displayedName,
+      final String? lastActivity,
       required final List<double> habitScores,
       required final double avgHabitScore,
       required final List<Habit> displayedHabits}) = _$UserStatsImpl;
@@ -226,7 +265,11 @@ abstract class _UserStats implements UserStats {
 
   @override // Id
   String get userId;
+  @override
+  String get displayedName;
   @override // Properties
+  String? get lastActivity;
+  @override
   List<double> get habitScores;
   @override
   double get avgHabitScore;

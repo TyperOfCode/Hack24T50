@@ -11,7 +11,7 @@ class FakeData {
     displayed: true,
     todayValue: 0,
     incrementValue: 0.25,
-    dailyGoal: 1,
+    dailyGoal: 2,
     maxValue: 6,
     stats: HabitStats(
       streak: 0,
@@ -134,10 +134,55 @@ class FakeData {
     ),
   );
 
-  static User baseFakeUser = User(userId: "fakeid", habits: [
-    FakeData.drinkWater,
-    FakeData.sleep,
-  ]);
+  static User baseFakeUser = User(
+    displayName: "You",
+    userId: "fakeid",
+    habits: [
+      FakeData.drinkWater,
+      FakeData.sleep,
+    ],
+    buddyIds: [],
+  );
+
+  static User kaianiUser = User(
+    displayName: "Kaiani",
+    userId: "kaiani",
+    habits: [
+      drinkWater.copyWith(
+        todayValue: 1.25,
+      ),
+      sleep.copyWith(
+        todayValue: 7,
+      ),
+    ],
+    buddyIds: [],
+    lastActivity: "Started: Drink Water",
+  );
+
+  static User sophiaUser = User(
+    displayName: "Sophia",
+    userId: "sophia",
+    habits: [
+      drinkWater.copyWith(
+        todayValue: 2,
+      ),
+      eatMeal.copyWith(
+        todayValue: 2,
+      ),
+      sleep.copyWith(
+        todayValue: 4,
+      ),
+    ],
+    buddyIds: [],
+    lastActivity: "On a 10 day streak!",
+  );
+
+  static List<User> getAllUsers() {
+    return [
+      kaianiUser,
+      sophiaUser,
+    ];
+  }
 
   static List<Habit> getAllHabits() {
     return [

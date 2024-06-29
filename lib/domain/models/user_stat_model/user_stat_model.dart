@@ -9,7 +9,9 @@ class UserStats with _$UserStats {
   const factory UserStats({
     // Id
     required String userId,
+    required String displayedName,
     // Properties
+    String? lastActivity,
     required List<double> habitScores,
     required double avgHabitScore,
     required List<Habit> displayedHabits,

@@ -12,7 +12,7 @@ class UserStateNotifier extends StateNotifier<User> {
           _initialUser,
         );
 
-  User? getCurrentUser() {
+  User getCurrentUser() {
     return state;
   }
 
@@ -78,6 +78,39 @@ class UserStateNotifier extends StateNotifier<User> {
     habitList.insert(index, habit);
 
     state = state.copyWith(habits: habitList);
+  }
+
+  UserStats? getUserStats(String userId) {
+    var users = FakeData.getAllUsers();
+
+    var user = users.firstWhereOrNull((e) => e.userId == userId);
+
+    return user?.toUserStats();
+  }
+
+  String? getRandomUserId({List<String>? excludeList}) {
+    var users = FakeData.getAllUsers();
+
+    if (excludeList != null) {
+      users = users.where((e) => !excludeList.contains(e.userId)).toList();
+    }
+
+    if (users.isEmpty) {
+      return null;
+    }
+
+    return (users..shuffle()).first.userId;
+  }
+
+  void addBuddy(String buddyId) {
+    var buddies = state.buddyIds.map((e) => e).toList();
+
+    if (buddies.contains(buddyId)) {
+      return;
+    }
+
+    buddies.add(buddyId);
+    state = state.copyWith(buddyIds: buddies);
   }
 }
 

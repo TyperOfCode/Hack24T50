@@ -9,6 +9,8 @@ part of 'user_stat_model.dart';
 _$UserStatsImpl _$$UserStatsImplFromJson(Map<String, dynamic> json) =>
     _$UserStatsImpl(
       userId: json['userId'] as String,
+      displayedName: json['displayedName'] as String,
+      lastActivity: json['lastActivity'] as String?,
       habitScores: (json['habitScores'] as List<dynamic>)
           .map((e) => (e as num).toDouble())
           .toList(),
@@ -21,6 +23,8 @@ _$UserStatsImpl _$$UserStatsImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$UserStatsImplToJson(_$UserStatsImpl instance) =>
     <String, dynamic>{
       'userId': instance.userId,
+      'displayedName': instance.displayedName,
+      'lastActivity': instance.lastActivity,
       'habitScores': instance.habitScores,
       'avgHabitScore': instance.avgHabitScore,
       'displayedHabits': instance.displayedHabits,

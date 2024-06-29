@@ -12,8 +12,11 @@ class User with _$User {
   const factory User({
     // Id
     required String userId,
+    String? lastActivity,
     // Properties
+    required String displayName,
     required List<Habit> habits,
+    required List<String> buddyIds,
   }) = _User;
 
   const User._();
@@ -24,6 +27,8 @@ class User with _$User {
         habitScores.reduce((v, e) => v + e) / habitScores.length;
 
     return UserStats(
+      displayedName: displayName,
+      lastActivity: lastActivity,
       userId: userId,
       habitScores: habitScores,
       avgHabitScore: avgHabitScore,

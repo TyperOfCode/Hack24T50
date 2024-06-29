@@ -21,8 +21,11 @@ User _$UserFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$User {
 // Id
-  String get userId => throw _privateConstructorUsedError; // Properties
+  String get userId => throw _privateConstructorUsedError;
+  String? get lastActivity => throw _privateConstructorUsedError; // Properties
+  String get displayName => throw _privateConstructorUsedError;
   List<Habit> get habits => throw _privateConstructorUsedError;
+  List<String> get buddyIds => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +37,12 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res, User>;
   @useResult
-  $Res call({String userId, List<Habit> habits});
+  $Res call(
+      {String userId,
+      String? lastActivity,
+      String displayName,
+      List<Habit> habits,
+      List<String> buddyIds});
 }
 
 /// @nodoc
@@ -51,17 +59,32 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   @override
   $Res call({
     Object? userId = null,
+    Object? lastActivity = freezed,
+    Object? displayName = null,
     Object? habits = null,
+    Object? buddyIds = null,
   }) {
     return _then(_value.copyWith(
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
+      lastActivity: freezed == lastActivity
+          ? _value.lastActivity
+          : lastActivity // ignore: cast_nullable_to_non_nullable
+              as String?,
+      displayName: null == displayName
+          ? _value.displayName
+          : displayName // ignore: cast_nullable_to_non_nullable
+              as String,
       habits: null == habits
           ? _value.habits
           : habits // ignore: cast_nullable_to_non_nullable
               as List<Habit>,
+      buddyIds: null == buddyIds
+          ? _value.buddyIds
+          : buddyIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -73,7 +96,12 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$$UserImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String userId, List<Habit> habits});
+  $Res call(
+      {String userId,
+      String? lastActivity,
+      String displayName,
+      List<Habit> habits,
+      List<String> buddyIds});
 }
 
 /// @nodoc
@@ -87,17 +115,32 @@ class __$$UserImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userId = null,
+    Object? lastActivity = freezed,
+    Object? displayName = null,
     Object? habits = null,
+    Object? buddyIds = null,
   }) {
     return _then(_$UserImpl(
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
+      lastActivity: freezed == lastActivity
+          ? _value.lastActivity
+          : lastActivity // ignore: cast_nullable_to_non_nullable
+              as String?,
+      displayName: null == displayName
+          ? _value.displayName
+          : displayName // ignore: cast_nullable_to_non_nullable
+              as String,
       habits: null == habits
           ? _value._habits
           : habits // ignore: cast_nullable_to_non_nullable
               as List<Habit>,
+      buddyIds: null == buddyIds
+          ? _value._buddyIds
+          : buddyIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -105,8 +148,14 @@ class __$$UserImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$UserImpl extends _User {
-  const _$UserImpl({required this.userId, required final List<Habit> habits})
+  const _$UserImpl(
+      {required this.userId,
+      this.lastActivity,
+      required this.displayName,
+      required final List<Habit> habits,
+      required final List<String> buddyIds})
       : _habits = habits,
+        _buddyIds = buddyIds,
         super._();
 
   factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
@@ -115,9 +164,12 @@ class _$UserImpl extends _User {
 // Id
   @override
   final String userId;
+  @override
+  final String? lastActivity;
 // Properties
+  @override
+  final String displayName;
   final List<Habit> _habits;
-// Properties
   @override
   List<Habit> get habits {
     if (_habits is EqualUnmodifiableListView) return _habits;
@@ -125,9 +177,17 @@ class _$UserImpl extends _User {
     return EqualUnmodifiableListView(_habits);
   }
 
+  final List<String> _buddyIds;
+  @override
+  List<String> get buddyIds {
+    if (_buddyIds is EqualUnmodifiableListView) return _buddyIds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_buddyIds);
+  }
+
   @override
   String toString() {
-    return 'User(userId: $userId, habits: $habits)';
+    return 'User(userId: $userId, lastActivity: $lastActivity, displayName: $displayName, habits: $habits, buddyIds: $buddyIds)';
   }
 
   @override
@@ -136,13 +196,23 @@ class _$UserImpl extends _User {
         (other.runtimeType == runtimeType &&
             other is _$UserImpl &&
             (identical(other.userId, userId) || other.userId == userId) &&
-            const DeepCollectionEquality().equals(other._habits, _habits));
+            (identical(other.lastActivity, lastActivity) ||
+                other.lastActivity == lastActivity) &&
+            (identical(other.displayName, displayName) ||
+                other.displayName == displayName) &&
+            const DeepCollectionEquality().equals(other._habits, _habits) &&
+            const DeepCollectionEquality().equals(other._buddyIds, _buddyIds));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, userId, const DeepCollectionEquality().hash(_habits));
+      runtimeType,
+      userId,
+      lastActivity,
+      displayName,
+      const DeepCollectionEquality().hash(_habits),
+      const DeepCollectionEquality().hash(_buddyIds));
 
   @JsonKey(ignore: true)
   @override
@@ -161,15 +231,24 @@ class _$UserImpl extends _User {
 abstract class _User extends User {
   const factory _User(
       {required final String userId,
-      required final List<Habit> habits}) = _$UserImpl;
+      final String? lastActivity,
+      required final String displayName,
+      required final List<Habit> habits,
+      required final List<String> buddyIds}) = _$UserImpl;
   const _User._() : super._();
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
 
   @override // Id
   String get userId;
+  @override
+  String? get lastActivity;
   @override // Properties
+  String get displayName;
+  @override
   List<Habit> get habits;
+  @override
+  List<String> get buddyIds;
   @override
   @JsonKey(ignore: true)
   _$$UserImplCopyWith<_$UserImpl> get copyWith =>
