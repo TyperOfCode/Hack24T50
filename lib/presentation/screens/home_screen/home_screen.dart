@@ -5,6 +5,7 @@ import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
 import 'package:step/data/repositories/user_handler.dart';
 import 'package:step/domain/models.dart';
+import 'package:step/gen/assets.gen.dart';
 import 'package:step/presentation/common/components/add_habit_button.dart';
 import 'package:step/presentation/common/components/habit_tile.dart';
 import 'package:step/presentation/common/styles/styles.dart';
@@ -35,7 +36,7 @@ class HomePage extends ConsumerWidget {
           children: [
             Positioned.fill(
               child: SvgPicture.asset(
-                'assets/home_splash.svg',
+                Assets.homeSplash,
                 alignment: Alignment.topCenter,
               ),
             ),
@@ -87,19 +88,35 @@ class HomePage extends ConsumerWidget {
 }
 
 Widget createHabitGridView(List<Habit> habits) {
-  return Container(
-    height: 500,
-    child: GridView.count(
-      padding: const EdgeInsets.all(15),
-      shrinkWrap: true,
-      crossAxisCount: 2,
-      crossAxisSpacing: 0,
-      mainAxisSpacing: 10,
-      children: habits
-          .map(
-            (e) => HabitTile(habit: e),
-          )
-          .toList(),
+  return SizedBox(
+    height: 510,
+    child: ShaderMask(
+      shaderCallback: (Rect bounds) {
+        return const LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Colors.transparent,
+            Colors.black,
+            Colors.black,
+            Colors.transparent
+          ],
+          stops: [0.0, 0.025, 0.9, 1],
+        ).createShader(bounds);
+      },
+      blendMode: BlendMode.dstIn,
+      child: GridView.count(
+        padding: const EdgeInsets.all(15),
+        shrinkWrap: true,
+        crossAxisCount: 2,
+        crossAxisSpacing: 0,
+        mainAxisSpacing: 10,
+        children: habits
+            .map(
+              (e) => HabitTile(habit: e),
+            )
+            .toList(),
+      ),
     ),
   );
 }
