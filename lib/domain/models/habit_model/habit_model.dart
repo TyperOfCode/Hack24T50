@@ -56,7 +56,7 @@ class HabitStats with _$HabitStats {
 @freezed
 class Day with _$Day {
   const factory Day({
-    required DateTime date,
+    required int dow,
     required double value,
   }) = _Day;
 

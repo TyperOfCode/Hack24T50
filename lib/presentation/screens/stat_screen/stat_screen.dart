@@ -6,6 +6,7 @@ import 'package:step/domain/models.dart';
 import 'package:step/global_logger.dart';
 import 'package:step/presentation/common/styles/styles.dart';
 import 'package:step/presentation/controllers/app/app_controller.dart';
+import 'package:step/presentation/screens/stat_screen/components/bar_chart.dart';
 import 'package:step/routes.dart';
 
 class StatScreen extends ConsumerWidget {
@@ -22,8 +23,9 @@ class StatScreen extends ConsumerWidget {
         currentUserNotifier.getHabit(appState.selectedHabitForStats!.id);
 
     if (selectedHabit == null) {
-      // navigate back
-      return Container();
+      return Container(
+        color: AppThemeColors.background500,
+      );
     }
 
     Color habitColor = Color(selectedHabit.hexColor);
@@ -146,7 +148,7 @@ class StatScreen extends ConsumerWidget {
               "Current Streak:          ${selectedHabit.stats.streak}",
               style: AppThemeTextStyles.defaultText.copyWith(
                 color: habitColor,
-                fontSize: 30,
+                fontSize: 20,
                 fontWeight: FontWeight.w800,
               ),
             ),
@@ -154,7 +156,7 @@ class StatScreen extends ConsumerWidget {
               "Best Streak:          ${selectedHabit.stats.longestStreak}",
               style: AppThemeTextStyles.defaultText.copyWith(
                 color: habitColor,
-                fontSize: 30,
+                fontSize: 20,
                 fontWeight: FontWeight.w800,
               ),
             ),
@@ -162,18 +164,18 @@ class StatScreen extends ConsumerWidget {
               "Days since start:          ${selectedHabit.stats.days.length}",
               style: AppThemeTextStyles.defaultText.copyWith(
                 color: habitColor,
-                fontSize: 30,
+                fontSize: 20,
                 fontWeight: FontWeight.w800,
               ),
             ),
-            SizedBox(height: 40),
+            BarChartSample1(),
+            SizedBox(height: 20),
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
                   onPressed: () {
                     goRouter.go(AppPaths.homeScreen.path);
-                    LOG.d("Here");
                     currentUserNotifier.removeHabit(selectedHabit.id);
                   },
                   child: Text('Remove',
