@@ -17,8 +17,8 @@ class FakeData {
       streak: 0,
       longestStreak: 0,
       days: [],
-    ), 
-    messages: ["One more sip!", "Stay hydrated!", "Hydrate before you die-drate!"],
+    ),
+    messages: ["One more sip!", "Stay hydrated!", "Hydration god!"],
   );
 
   static Habit sleep = const Habit(
@@ -78,7 +78,11 @@ class FakeData {
       longestStreak: 0,
       days: [],
     ),
-    messages: ["How about some fresh air?", "Time to touch grass.", "Lovely weather right?"],
+    messages: [
+      "How about some fresh air?",
+      "Time to touch grass.",
+      "Lovely weather right?"
+    ],
   );
 
   static Habit socialize = const Habit(
@@ -98,7 +102,11 @@ class FakeData {
       longestStreak: 0,
       days: [],
     ),
-    messages: ["Movie night?", "Call your mother.", "Time to talk to a friend?"],
+    messages: [
+      "Movie night?",
+      "How about a catch up?",
+      "Time to talk to a friend?"
+    ],
   );
 
   static Habit brushTeeth = const Habit(
@@ -138,17 +146,21 @@ class FakeData {
       longestStreak: 0,
       days: [],
     ),
-    messages: ["Don't forget deodorant!", "Bath time!", "How about a nice relaxing shower?"],
+    messages: [
+      "Don't forget deodorant!",
+      "Bath time!",
+      "How about a nice relaxing shower?"
+    ],
   );
 
-    static Habit exercise = const Habit(
+  static Habit exercise = const Habit(
     name: "Exercise",
     id: "1241",
     iconHexId: 0xf06c3, // Gymnastics icon
     unitLabel: "",
     hexColor: 0xFF456260,
     isMeasurable: false,
-    displayed: false,
+    displayed: true,
     todayValue: 0,
     incrementValue: 1,
     dailyGoal: 1,
@@ -204,10 +216,29 @@ class FakeData {
     lastActivity: "On a 10 day streak!",
   );
 
+  static User bobUser = User(
+    displayName: "Bob",
+    userId: "bob",
+    habits: [
+      drinkWater.copyWith(
+        todayValue: 0.2,
+      ),
+      exercise.copyWith(
+        todayValue: 0,
+      ),
+      sleep.copyWith(
+        todayValue: 8,
+      ),
+    ],
+    buddyIds: [],
+    lastActivity: "Joined recently",
+  );
+
   static List<User> getAllUsers() {
     return [
       kaianiUser,
       sophiaUser,
+      bobUser,
     ];
   }
 

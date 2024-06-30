@@ -7,7 +7,7 @@ import 'package:step/data/repositories/user_handler.dart';
 import 'package:step/domain/models.dart';
 import 'package:step/gen/assets.gen.dart';
 import 'package:step/presentation/screens/add_habit_screen/components/add_habit_button.dart';
-import 'package:step/presentation/screens/add_habit_screen/components/habit_tile.dart';
+import 'package:step/presentation/screens/home_screen/components/habit_tile.dart';
 import 'package:step/presentation/common/styles/styles.dart';
 import 'package:step/routes.dart';
 

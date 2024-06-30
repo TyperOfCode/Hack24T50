@@ -3,6 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:step/domain/models/habit_model/habit_model.dart';
 import 'package:step/global_logger.dart';
 import 'package:step/presentation/common/styles/styles.dart';
+import 'package:step/presentation/popups/notification/user_notif.dart';
 
 class HabitIcon extends StatelessWidget {
   final String username;
@@ -24,9 +25,26 @@ class HabitIcon extends StatelessWidget {
     return InkWell(
       onTap: () {
         LOG.i("Send notification to ${username} for ${habit.name}");
+
+        var messages = habit.messages.map((e) => e).toList();
+
+        var message = (messages..shuffle()).firstOrNull;
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          GenerateUserNotif(
+            title: "Encouraged $username!",
+            message: message,
+            color: habitColor,
+            textColor: AppThemeColors.background500,
+            icon: IconData(habit.iconHexId, fontFamily: "MaterialIcons"),
+          ),
+        );
       },
+      customBorder: const CircleBorder(),
+      radius: 10,
       splashColor: habitColor,
       child: Container(
+        
         width: size * 1.2,
         height: size * 1.2,
         child: Column(
