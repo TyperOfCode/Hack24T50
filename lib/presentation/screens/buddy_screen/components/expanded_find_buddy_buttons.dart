@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:step/data/repositories/user_handler.dart';
 import 'package:step/presentation/common/styles/styles.dart';
+import 'package:step/presentation/screens/buddy_screen/components/find_buddy_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ExpandedFindBuddyButtons extends ConsumerWidget {
@@ -17,46 +18,8 @@ class ExpandedFindBuddyButtons extends ConsumerWidget {
         const Gap(20),
         Hero(
           tag: "findb",
-          child: ElevatedButton(
-            onPressed: () {
-              // Find Buddy
-              String? userId = userStateNotifier.getRandomUserId(
-                  excludeList: userStateNotifier.getCurrentUser().buddyIds);
-
-              if (userId == null) {
-                return;
-              }
-
-              userStateNotifier.addBuddy(userId);
-            },
-            style: const ButtonStyle(
-              backgroundColor: WidgetStatePropertyAll(AppThemeColors.accent),
-            ),
-            child: SizedBox(
-              width: 210,
-              height: 50,
-              child: Center(
-                child: Row(
-                  children: [
-                    const Icon(
-                      Icons.search,
-                      size: 30,
-                      color: AppThemeColors.background500,
-                    ),
-                    const Gap(10),
-                    Text(
-                      "Find me a buddy",
-                      textAlign: TextAlign.center,
-                      style: AppThemeTextStyles.impactText.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: AppThemeColors.background500,
-                        fontSize: AppFontSizes.header1Size,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+          child: FindBuddyButton(
+            condensed: false,
           ),
         ),
         const Gap(10),
@@ -70,11 +33,11 @@ class ExpandedFindBuddyButtons extends ConsumerWidget {
           tag: "invf",
           child: ElevatedButton(
             onPressed: () async {
-              final Uri url =
-                  Uri.parse('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
-              if (!await launchUrl(url)) {
-                return;
-              }
+              // final Uri url =
+              //     Uri.parse('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+              // if (!await launchUrl(url)) {
+              //   return;
+              // }
             },
             style: const ButtonStyle(
               backgroundColor: WidgetStatePropertyAll(AppThemeColors.secondary),
@@ -86,7 +49,7 @@ class ExpandedFindBuddyButtons extends ConsumerWidget {
                 child: Row(
                   children: [
                     const Icon(
-                      Icons.send,
+                      Icons.group_add_rounded,
                       size: 30,
                       color: AppThemeColors.background500,
                     ),

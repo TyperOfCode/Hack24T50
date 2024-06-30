@@ -89,7 +89,19 @@ Widget _buildBuddyScreen(User user, UserStateNotifier userStateNotifier) {
 
   return Column(
     children: [
-      CondensedFindBuddyButtons(),
+      Row(
+        children: [
+          const CondensedFindBuddyButtons(),
+          const Spacer(),
+          Text(
+            "${user.buddyIds.length} / 3",
+            style: AppThemeTextStyles.impactText.copyWith(
+              color: AppThemeColors.secondary,
+            ),
+          ),
+          const Spacer(),
+        ],
+      ),
       Container(
         constraints: BoxConstraints(maxHeight: 400),
         child: ListView(children: [
