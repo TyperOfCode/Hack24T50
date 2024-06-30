@@ -84,6 +84,10 @@ class UserStateNotifier extends StateNotifier<User> {
     state = state.copyWith(habits: habitList);
   }
 
+  bool getAllDailyHabitsCompleted() {
+    return state.habits.every((element) => element.todayValue >= element.dailyGoal);
+  }
+
   UserStats? getUserStats(String userId) {
     var users = FakeData.getAllUsers();
 
