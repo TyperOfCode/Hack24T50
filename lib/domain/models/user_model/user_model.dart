@@ -38,7 +38,9 @@ class User with _$User {
 
   List<Habit> availableHabits() {
     List<Habit> allHabits = FakeData.getAllHabits();
-    return allHabits.where((e) => !habits.contains(e)).toList();
+    List<String> habitIds = habits.map((e) => e.id).toList();
+
+    return allHabits.where((e) => !habitIds.contains(e.id)).toList();
   }
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
