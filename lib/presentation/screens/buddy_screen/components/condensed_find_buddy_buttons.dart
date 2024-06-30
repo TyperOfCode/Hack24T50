@@ -4,6 +4,7 @@ import 'package:gap/gap.dart';
 import 'package:step/data/repositories/user_handler.dart';
 import 'package:step/global_logger.dart';
 import 'package:step/presentation/common/styles/styles.dart';
+import 'package:step/presentation/screens/buddy_screen/components/find_buddy_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CondensedFindBuddyButtons extends ConsumerWidget {
@@ -18,48 +19,34 @@ class CondensedFindBuddyButtons extends ConsumerWidget {
         const Gap(20),
         Hero(
           tag: "findb",
-          child: IconButton(
-            onPressed: () {
-              // Find Buddy
-              var user = userStateNotifier.getCurrentUser();
-
-              String? userId =
-                  userStateNotifier.getRandomUserId(excludeList: user.buddyIds);
-
-              if (userId == null) {
-                return;
-              }
-
-              userStateNotifier.addBuddy(userId);
-            },
-            icon: const Icon(
-              Icons.search,
-              size: 30,
-              color: AppThemeColors.background500,
-            ),
-            style: const ButtonStyle(
-              backgroundColor: WidgetStatePropertyAll(AppThemeColors.accent),
-            ),
+          child: FindBuddyButton(
+            condensed: true,
           ),
         ),
         const Gap(20),
         Hero(
           tag: "invf",
-          child: IconButton(
+          child: ElevatedButton(
             onPressed: () async {
-              final Uri url =
-                  Uri.parse('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
-              if (!await launchUrl(url)) {
-                return;
-              }
+              // lol
+              // final Uri url =
+              //     Uri.parse('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+              // if (!await launchUrl(url)) {
+              //   return;
+              // }
             },
-            icon: const Icon(
-              Icons.send,
-              size: 30,
-              color: AppThemeColors.background500,
-            ),
             style: const ButtonStyle(
               backgroundColor: WidgetStatePropertyAll(AppThemeColors.secondary),
+            ),
+            child: const SizedBox(
+              height: 50,
+              child: Center(
+                child: Icon(
+                  Icons.group_add_rounded,
+                  size: 25,
+                  color: AppThemeColors.background500,
+                ),
+              ),
             ),
           ),
         ),

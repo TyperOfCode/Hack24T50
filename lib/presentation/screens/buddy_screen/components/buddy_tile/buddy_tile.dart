@@ -20,21 +20,9 @@ class BuddyTile extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Container(
-            height: 105,
+        SizedBox(
+            height: 125,
             width: 300,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
-              color: AppThemeColors.background500,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 5,
-                  blurRadius: 7,
-                  offset: const Offset(0, 3),
-                ),
-              ],
-            ),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
@@ -55,7 +43,7 @@ class BuddyTile extends StatelessWidget {
                           fontSize: AppFontSizes.header1Size,
                         ),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       notNullUserStat.lastActivity != null
                           ? Text(
                               notNullUserStat.lastActivity ?? "",
@@ -77,7 +65,7 @@ class BuddyTile extends StatelessWidget {
                                 child: HabitIcon(
                                     username: notNullUserStat.displayedName,
                                     habit: e,
-                                    size: 40),
+                                    size: 50),
                               ))
                           .toList(),
                     ],

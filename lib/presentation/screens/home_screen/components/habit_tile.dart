@@ -6,7 +6,9 @@ import 'package:step/domain/models/habit_model/habit_model.dart';
 import 'package:step/global_logger.dart';
 import 'package:step/presentation/common/styles/styles.dart';
 import 'package:step/presentation/controllers/app/app_controller.dart';
+import 'package:step/presentation/controllers/app/sound_controller.dart';
 import 'package:step/routes.dart';
+import 'package:step/global_logger.dart';
 
 class HabitTile extends ConsumerStatefulWidget {
   final Habit habit;
@@ -23,6 +25,7 @@ class HabitTileState extends ConsumerState<HabitTile> {
   @override
   Widget build(BuildContext context) {
     var userStateNotifier = ref.watch(userStateProvider.notifier);
+    var jingleNotifier = ref.watch(jingleControllerProvider.notifier);
     var goRouter = ref.watch(goRouterProvider);
     var appStateNotifier = ref.watch(appStateProvider.notifier);
     Color habitColor = Color(widget.habit.hexColor);
@@ -41,6 +44,19 @@ class HabitTileState extends ConsumerState<HabitTile> {
         InkWell(
           onTap: () {
             userStateNotifier.incrementHabit(widget.habit.id);
+            
+            Habit? habit = userStateNotifier.getHabit(widget.habit.id);
+            if (habit != null) {
+              bool allCompleted = userStateNotifier.getAllDailyHabitsCompleted();
+              if (allCompleted) {
+                jingleNotifier.state.playCompletedAllHabits();
+              } else if (habit.todayValue >= habit.dailyGoal) {
+                jingleNotifier.state.playCompletedHabit();
+              } else {
+                jingleNotifier.state.playIncrementHabit();
+              }
+
+            }
           },
           onLongPress: () {
             LOG.i("Should open stats page for ${widget.habit.name}");
