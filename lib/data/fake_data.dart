@@ -56,7 +56,7 @@ class FakeData {
     stats: HabitStats(
       streak: 0,
       longestStreak: 0,
-      days: [],
+      days: [Day(dow: 0 , value: 2), Day(dow: 1, value: 3), Day(dow: 2, value: 2), Day(dow: 3, value: 3), Day(dow: 4, value: 2)],
     ),
     messages: ["Bone apple tea!", "Don't forget lunch!", "Did you eat today?"],
   );
@@ -76,7 +76,7 @@ class FakeData {
     stats: HabitStats(
       streak: 0,
       longestStreak: 0,
-      days: [],
+      days: [Day(dow: 0, value: 1), Day(dow: 1, value: 0), Day(dow: 2, value: 1), Day(dow: 3, value: 0), Day(dow: 4, value: 1), Day(dow: 5, value: 0)],
     ),
     messages: [
       "How about some fresh air?",
@@ -100,7 +100,7 @@ class FakeData {
     stats: HabitStats(
       streak: 0,
       longestStreak: 0,
-      days: [],
+      days: [Day(dow: 0, value: 1), Day(dow: 1, value: 0), Day(dow: 2, value: 1), Day(dow: 3, value: 0)],
     ),
     messages: [
       "Movie night?",
@@ -124,7 +124,7 @@ class FakeData {
     stats: HabitStats(
       streak: 0,
       longestStreak: 0,
-      days: [],
+      days: [Day(dow: 0, value: 2)],
     ),
     messages: ["Keep those teeth shiny!", "Brushin' time!", "Maybe floss too?"],
   );
@@ -144,7 +144,7 @@ class FakeData {
     stats: HabitStats(
       streak: 0,
       longestStreak: 0,
-      days: [],
+      days: [Day(dow: 0, value: 1), Day(dow: 1, value: 0), Day(dow: 2, value: 1), Day(dow: 3, value: 0)],
     ),
     messages: [
       "Don't forget deodorant!",
@@ -168,7 +168,7 @@ class FakeData {
     stats: HabitStats(
       streak: 0,
       longestStreak: 0,
-      days: [],
+      days: [Day(dow: 0, value: 1), Day(dow: 1, value: 0), Day(dow: 2, value: 1), Day(dow: 3, value: 0)],
     ),
     messages: ["Gym?", "Time to pump some iron!", "How bout' a run?"],
   );
