@@ -57,11 +57,11 @@ Map<String, dynamic> _$$HabitStatsImplToJson(_$HabitStatsImpl instance) =>
     };
 
 _$DayImpl _$$DayImplFromJson(Map<String, dynamic> json) => _$DayImpl(
-      date: DateTime.parse(json['date'] as String),
+      dow: (json['dow'] as num).toInt(),
       value: (json['value'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$$DayImplToJson(_$DayImpl instance) => <String, dynamic>{
-      'date': instance.date.toIso8601String(),
+      'dow': instance.dow,
       'value': instance.value,
     };

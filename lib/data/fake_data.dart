@@ -16,7 +16,7 @@ class FakeData {
     stats: HabitStats(
       streak: 0,
       longestStreak: 0,
-      days: [],
+      days: [Day(dow: 0, value: 1.5), Day(dow: 1, value: 2.0), Day(dow: 2, value: 1.75), Day(dow: 3, value: 2.5), Day(dow: 4, value: 2.0), Day(dow: 5, value: 2.25), Day(dow: 6, value: 2.0)],
     ), 
     messages: ["One more sip!", "Stay hydrated!", "Hydrate before you die-drate!"],
   );
@@ -36,7 +36,7 @@ class FakeData {
     stats: HabitStats(
       streak: 0,
       longestStreak: 0,
-      days: [],
+      days: [Day(dow: 0, value: 7.5), Day(dow: 1, value: 8.0), Day(dow: 2, value: 7.75), Day(dow: 3, value: 8.5), Day(dow: 4, value: 8.0), Day(dow: 5, value: 8.25), Day(dow: 6, value: 8.0)],
     ),
     messages: ["Sleep tight!", "Rest up!", "Sweet dreams!"],
   );

@@ -629,7 +629,7 @@ Day _$DayFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Day {
-  DateTime get date => throw _privateConstructorUsedError;
+  int get dow => throw _privateConstructorUsedError;
   double get value => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -642,7 +642,7 @@ abstract class $DayCopyWith<$Res> {
   factory $DayCopyWith(Day value, $Res Function(Day) then) =
       _$DayCopyWithImpl<$Res, Day>;
   @useResult
-  $Res call({DateTime date, double value});
+  $Res call({int dow, double value});
 }
 
 /// @nodoc
@@ -657,14 +657,14 @@ class _$DayCopyWithImpl<$Res, $Val extends Day> implements $DayCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? date = null,
+    Object? dow = null,
     Object? value = null,
   }) {
     return _then(_value.copyWith(
-      date: null == date
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      dow: null == dow
+          ? _value.dow
+          : dow // ignore: cast_nullable_to_non_nullable
+              as int,
       value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -679,7 +679,7 @@ abstract class _$$DayImplCopyWith<$Res> implements $DayCopyWith<$Res> {
       __$$DayImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({DateTime date, double value});
+  $Res call({int dow, double value});
 }
 
 /// @nodoc
@@ -691,14 +691,14 @@ class __$$DayImplCopyWithImpl<$Res> extends _$DayCopyWithImpl<$Res, _$DayImpl>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? date = null,
+    Object? dow = null,
     Object? value = null,
   }) {
     return _then(_$DayImpl(
-      date: null == date
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      dow: null == dow
+          ? _value.dow
+          : dow // ignore: cast_nullable_to_non_nullable
+              as int,
       value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -710,19 +710,19 @@ class __$$DayImplCopyWithImpl<$Res> extends _$DayCopyWithImpl<$Res, _$DayImpl>
 /// @nodoc
 @JsonSerializable()
 class _$DayImpl implements _Day {
-  const _$DayImpl({required this.date, required this.value});
+  const _$DayImpl({required this.dow, required this.value});
 
   factory _$DayImpl.fromJson(Map<String, dynamic> json) =>
       _$$DayImplFromJson(json);
 
   @override
-  final DateTime date;
+  final int dow;
   @override
   final double value;
 
   @override
   String toString() {
-    return 'Day(date: $date, value: $value)';
+    return 'Day(dow: $dow, value: $value)';
   }
 
   @override
@@ -730,13 +730,13 @@ class _$DayImpl implements _Day {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DayImpl &&
-            (identical(other.date, date) || other.date == date) &&
+            (identical(other.dow, dow) || other.dow == dow) &&
             (identical(other.value, value) || other.value == value));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, date, value);
+  int get hashCode => Object.hash(runtimeType, dow, value);
 
   @JsonKey(ignore: true)
   @override
@@ -753,13 +753,13 @@ class _$DayImpl implements _Day {
 }
 
 abstract class _Day implements Day {
-  const factory _Day(
-      {required final DateTime date, required final double value}) = _$DayImpl;
+  const factory _Day({required final int dow, required final double value}) =
+      _$DayImpl;
 
   factory _Day.fromJson(Map<String, dynamic> json) = _$DayImpl.fromJson;
 
   @override
-  DateTime get date;
+  int get dow;
   @override
   double get value;
   @override
