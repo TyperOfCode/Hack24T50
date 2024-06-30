@@ -38,9 +38,13 @@ class UserStateNotifier extends StateNotifier<User> {
   }
 
   void editHabit(String habitId, Habit newHabit) {
+    List<String> habitIdList = state.habits.map((e) => e.id).toList();
     List<Habit> habitList = state.habits.map((e) => e).toList();
-    habitList.removeWhere((element) => element.id == habitId);
-    habitList.add(newHabit);
+
+    int index = habitIdList.indexOf(habitId);
+
+    habitList.removeAt(index);
+    habitList.insert(index, newHabit);
 
     state = state.copyWith(habits: habitList);
   }
