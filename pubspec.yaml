@@ -52,6 +52,7 @@ dependencies:
   url_launcher: ^6.3.0
 
   fl_chart: ^0.68.0
+  audioplayers: ^6.0.0
 
 dev_dependencies:
   flutter_test:
@@ -91,6 +92,7 @@ flutter:
   assets:
     - assets/buddy_splash.svg
     - assets/home_splash.svg
+    - assets/sounds/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
