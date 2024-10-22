@@ -18,3 +18,6 @@ To run the app, make sure this machine is connected to an android device. This c
 This project has a non-default entry point. You'll have to specify it in the `run` command.
 
 `flutter run lib/entrypoints/prod/main_prod.dart -d`
+
+
+Hackathon Project Link: https://devpost.com/software/step-j04io8
